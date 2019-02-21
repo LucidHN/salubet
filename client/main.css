@@ -1,4 +1,7 @@
 body {
-  padding: 10px;
   font-family: sans-serif;
+}
+
+.Absolute-Center {
+  margin-top: 20vh;
 }
