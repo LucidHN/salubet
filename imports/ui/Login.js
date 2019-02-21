@@ -33,16 +33,9 @@ export default class Login extends React.Component {
                                     placeholder="Password" 
                                 />
                             </Form.Group>
-                            <Container>
-                                <Row>
-                                    <Col sm={{span:2, offset:5}} md={{offset:10, span:2}}>
-                                        <Button variant="primary" type="submit">
-                                            Submit
-                                        </Button>
-                                    </Col>
-                                </Row>
-                            </Container>
-                                
+                            <Button variant="outline-primary" className ="pull-right" type="submit" block>
+                                Submit
+                            </Button>
                         </Form>
                     </Col>
                 </Row>
