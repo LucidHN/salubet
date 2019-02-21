@@ -21,3 +21,4 @@ alanning:roles
 static-html
 react-meteor-data
 session
+meteortesting:mocha
