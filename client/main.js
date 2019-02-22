@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import ReactDOM from 'react-dom';
-import React from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
 
 import { routes } from '../imports/routes/routes';
 
