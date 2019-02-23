@@ -1,45 +1,66 @@
-import React from 'react'
-import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import React from 'react';
+import { withTracker } from 'meteor/react-meteor-data';
 
-export default class Login extends React.Component {
+import { history } from '../routes/routes';
+
+export class Login extends React.Component {
     state = {
         email: '',
         errorMessage: false,
         loading: false,
         password: ''
     }
+    onSubmit = (event) => {
+        event.preventDefault();
+        let email = this.state.email.trim();
+        let password = this.state.password;
+        this.props.loginWithPassword({ email }, password, (err) => {
+            if (err) {
+                this.setState({error: 'Unable to login. Check email and password.'});
+            }else {
+                this.setState({error: ''});
+                history.push('/home');
+            }
+        });
+    }
     render() {
         return (
-            <Container className="Absolute-Center">
-                <Row className="justify-content-md-center">
-                    <Col md={{span:6}}>
-                        <h2>Login</h2>
-                        <Form >
-                            <Form.Group controlId="formBasicEmail">
-                                <Form.Label>Email address</Form.Label>
-                                <Form.Control 
-                                    value={this.state.email}
-                                    onChange={(event) => this.setState({ email: event.target.value })}
+            <div className="container absolute-center">
+                <div className="row justify-content-md-center">
+                    <div className="col-sm-12 col-md-6 col-lg-6 align-self-center">
+                        <form onSubmit={this.onSubmit}>
+                            <h2>Login</h2>
+                            <div className="form-group">
+                                <label>Email address</label>
+                                <input 
                                     type="email" 
-                                    placeholder="Enter email" 
+                                    className="form-control" 
+                                    id="email" 
+                                    aria-describedby="emailHelp" 
+                                    placeholder="Enter email"
+                                    onChange={(event) => this.setState({ email: event.target.value })}
                                 />
-                            </Form.Group>
-                            <Form.Group controlId="formBasicPassword">
-                                <Form.Label>Password</Form.Label>
-                                <Form.Control 
-                                    value={this.state.password}
-                                    onChange={(event) => this.setState({ password: event.target.value })}
+                            </div>
+                            <div className="form-group">
+                                <label>Password</label>
+                                <input 
                                     type="password" 
+                                    className="form-control" 
+                                    id="password" 
                                     placeholder="Password" 
-                                />
-                            </Form.Group>
-                            <Button variant="outline-primary" className ="pull-right" type="submit" block>
-                                Submit
-                            </Button>
-                        </Form>
-                    </Col>
-                </Row>
-            </Container>
-            );
+                                    onChange={(event) => this.setState({ password: event.target.value })}
+                                    />
+                            </div>
+                            <button type="submit" className="btn btn-outline-primary btn-block">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        );
     }
-}
+};
+
+export default withTracker(() => ({
+    loginWithPassword: Meteor.loginWithPassword
+}))(Login);
+
