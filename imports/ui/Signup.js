@@ -29,10 +29,10 @@ export class Signup extends React.Component {
             };
             await this.props.call('user.createUser', user, (error) => {
                 if (error) {
-                    this.setState({ 
-                        loading: false,  
-                        errorMessage: error.message 
-                    }); 
+                    this.setState({
+                        loading: false,
+                        errorMessage: error.message
+                    });
                 } else {
                     this.setState({ loading: false });
                     history.push('/login');
@@ -53,83 +53,73 @@ export class Signup extends React.Component {
                             <h2>Signup</h2>
                             <div className="form-group">
                                 <label>Name</label>
-                                <input 
-                                    type="text" 
-                                    className="form-control" 
-                                    id="name" aria-describedby="userName" 
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    id="name" aria-describedby="userName"
                                     placeholder="Enter full name"
-                                    onChange={(event) => this.setState({ name: event.target.value })} 
+                                    onChange={(event) => this.setState({ name: event.target.value })}
                                 />
                             </div>
                             <div className="form-group">
                                 <label>Medical Center</label>
                                 <div className="form-check  mb-1  ">
-                                    <input 
-                                        className="form-check-input" 
-                                        type="radio" 
-                                        name="medicalCenterType" 
-                                        id="hospital" 
+                                    <input
+                                        className="form-check-input"
+                                        type="radio"
+                                        name="medicalCenterType"
+                                        id="hospital"
                                         value="hospital"
-                                        onChange={(event) => this.setState({ medicalCenterType: event.target.value })}  
+                                        onChange={(event) => this.setState({ medicalCenterType: event.target.value })}
                                     />
                                     <label className="form-check-label" htmlFor="hospital">Hospital</label>
                                 </div>
                                 <div className="form-check mb-1">
-                                    <input 
-                                        className="form-check-input" 
-                                        type="radio" 
-                                        name="medicalCenterType" 
-                                        id="clinic" 
-                                        value="clinic" 
+                                    <input
+                                        className="form-check-input"
+                                        type="radio"
+                                        name="medicalCenterType"
+                                        id="clinic"
+                                        value="clinic"
                                         onChange={(event) => this.setState({ medicalCenterType: event.target.value })}
                                     />
                                     <label className="form-check-label" htmlFor="clinic">Clinic</label>
                                 </div>
-                                <div className="dropdown mt-2 mb-2">
-                                    
-                                    <button className="btn btn-primary dropdown-toggle btn-block" type="button" id="medicalCenter" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Available Medical Centers
-                                    </button>
-                                    <div className="dropdown-menu" aria-labelledby="medicalCenter">
-                                        <a 
-                                            className="dropdown-item"
-                                            onClick={(event) => (this.handleMedicalCenterDropdown(event, 'HMS'))}
-                                        >HMS</a>
-                                        <a 
-                                        className="dropdown-item"
-                                        onClick={(event) => (this.handleMedicalCenterDropdown(event, 'San Felipe'))}
-                                        >San Felipe</a>
-                                    </div>
-                                </div>
+                                <select className="form-control mt-2 mb-2" id="medicalCenter">
+                                    <option value="default" >Available Medical Centers</option>
+                                    <option value="HMS" onClick={(event) => (this.handleMedicalCenterDropdown(event, 'HMS'))}>HMS</option>
+                                    <option value="San Felipe" onClick={(event) => (this.handleMedicalCenterDropdown(event, 'San Felipe'))}>San Felipe</option>
+                                    <option value="Medical Center" onClick={(event) => (this.handleMedicalCenterDropdown(event, 'Medical Center'))}>Medical Center</option>
+                                </select>
                             </div>
                             <div className="form-group">
                                 <label>Email address</label>
-                                <input 
-                                    type="email" 
-                                    className="form-control" 
-                                    id="email" 
-                                    aria-describedby="emailHelp" 
-                                    placeholder="Enter email" 
+                                <input
+                                    type="email"
+                                    className="form-control"
+                                    id="email"
+                                    aria-describedby="emailHelp"
+                                    placeholder="Enter email"
                                     onChange={(event) => this.setState({ email: event.target.value })}
                                 />
                             </div>
                             <div className="form-group">
                                 <label>Password</label>
-                                <input 
-                                    type="password" 
-                                    className="form-control" 
-                                    id="password" 
+                                <input
+                                    type="password"
+                                    className="form-control"
+                                    id="password"
                                     placeholder="Password"
-                                    onChange={(event) => this.setState({ password: event.target.value })} 
+                                    onChange={(event) => this.setState({ password: event.target.value })}
                                 />
                             </div>
                             <div className="form-group">
                                 <label>Confirm Password</label>
-                                <input 
-                                    type="password" 
-                                    className="form-control" 
-                                    id="confirmPassword" 
-                                    placeholder="Confirm password" 
+                                <input
+                                    type="password"
+                                    className="form-control"
+                                    id="confirmPassword"
+                                    placeholder="Confirm password"
                                     onChange={(event) => this.setState({ confirmPassword: event.target.value })}
                                 />
                             </div>
