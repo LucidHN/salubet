@@ -104,6 +104,7 @@ nav.nav-white-background{
   background: #fff;
 }
 
+
 @media (max-width: 768px) {
   #sidebar {
       margin-left: -250px;
