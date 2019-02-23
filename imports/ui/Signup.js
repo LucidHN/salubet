@@ -35,7 +35,7 @@ export class Signup extends React.Component {
                     });
                 } else {
                     this.setState({ loading: false });
-                    history.push('/login');
+                    history.push('/');
                 }
             });
         }

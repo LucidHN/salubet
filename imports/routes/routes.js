@@ -16,7 +16,7 @@ export const history = createBrowserHistory();
 export const routes = (
     <Router history={history}>
         <Switch >
-            <Route exact path="/login" component={Login} />
+            <Route exact path="/" component={Login} />
             <Route exact path="/signup" component={Signup} />
             <Dashboard> 
                 <PrivateRoute exact path="/home" component={Home} />
