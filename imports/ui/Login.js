@@ -25,34 +25,40 @@ export class Login extends React.Component {
     }
     render() {
         return (
-            <div className="container absolute-center">
-                <div className="row justify-content-md-center">
-                    <div className="col-sm-12 col-md-6 col-lg-6 align-self-center">
-                        <form onSubmit={this.onSubmit}>
-                            <h2>Login</h2>
-                            <div className="form-group">
-                                <label>Email address</label>
-                                <input 
-                                    type="email" 
-                                    className="form-control" 
-                                    id="email" 
-                                    aria-describedby="emailHelp" 
-                                    placeholder="Enter email"
-                                    onChange={(event) => this.setState({ email: event.target.value })}
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label>Password</label>
-                                <input 
-                                    type="password" 
-                                    className="form-control" 
-                                    id="password" 
-                                    placeholder="Password" 
-                                    onChange={(event) => this.setState({ password: event.target.value })}
+            <div className="signup-container">
+                <div className="container absolute-center signup-content-container">
+                    <div className="row justify-content-md-center">
+                        <div className="col-sm-12 col-md-6 col-lg-6 align-self-center">
+                            <form onSubmit={this.onSubmit}>
+                                <div id="salubet-logo-login" className="salubet-logo-box">
+                                    <img src="/theme_images/logo_blanco.png" className="salubet-logo"></img>
+                                </div>
+                                <h3 className="text-center login-header">Bienvenido a la plataforma Salubet</h3>
+                                <h3 className="text-center login-header">Expedientes</h3>
+                                <div className="form-group">
+                                    <label>Email address</label>
+                                    <input 
+                                        type="email" 
+                                        className="form-control" 
+                                        id="email" 
+                                        aria-describedby="emailHelp" 
+                                        placeholder="Enter email"
+                                        onChange={(event) => this.setState({ email: event.target.value })}
                                     />
-                            </div>
-                            <button type="submit" className="btn btn-outline-primary btn-block">Submit</button>
-                        </form>
+                                </div>
+                                <div className="form-group">
+                                    <label>Password</label>
+                                    <input 
+                                        type="password" 
+                                        className="form-control" 
+                                        id="password" 
+                                        placeholder="Password" 
+                                        onChange={(event) => this.setState({ password: event.target.value })}
+                                        />
+                                </div>
+                                <button type="submit" className="btn btn-outline-primary submit-button">Submit</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

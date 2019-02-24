@@ -1,19 +1,87 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html, body {margin: 0; height: 100%; overflow: hidden}
+
 body {
   font-family: sans-serif;
 }
 
 .absolute-center {
-  margin-top: 20vh;
+  margin-top: 0vh;
+  height: 100%;
+}
+
+.signup-container {
+  height: 100vh;
+  background-image: url("/theme_images/Background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
+.signup-content-container {
+  height: 100vh;
+  padding-top: 5vh;
+  color: white;
+}
+
+.signup-form-container {
+  height: 80vh;
+}
+
+.login-header {
+  color: lightgrey;
+  font-size: 14px;
+}
+
+.submit-button {
+  display: block !important;
+  width: 50%;
+  margin: 0 auto !important;
+  border-radius: 10rem !important;
+  background-color: lightgrey !important;
+  border-color: lightgrey !important;
+  color: #3BAB83 !important;
+  font-size: 20px !important;
+}
+
+.submit-button:hover {
+  background-color: #ddd;
+  transition: ease-in;
+}
+
+.salubet-logo-box {
+  margin-right: auto !important;
+  margin-left: auto !important;
+  height: 12vh;
+  width: 8vw;
+  
+}
+
+.salubet-logo {
+  height: 100%;
+  width: 100%;
+}
+
+#salubet-logo-login {
+  margin-top: 10vh;
+  margin-bottom: 5vh;
+  height: 16vh;
 }
 
 #content{
   margin-left: 250px;
   transition: all 0.3s;
-  
 }
+
 #content.active{
   margin-left: 0px;
-  
 }
 
 .wrapper {
