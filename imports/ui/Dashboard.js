@@ -3,21 +3,46 @@ import React from 'react';
 import Home from './Home';
 import RegisterPatients from './RegisterPatients';
 
+import MainSidebar from './MainSidebar';
+import PatientSidebar from './PatientSidebar';
+
+
 export default class Dashboard extends React.Component {
     state = {
-        sidebar: 'inactive',
+
         patientSidebar: false,
-        recordSidebar: false,
         mainSidebar: true
     }
 
 
-    componentDidMount() {
-        $("#sidebar").mCustomScrollbar({
-            theme: "minimal"
+    renderSidebar(){
+        if(this.state.mainSidebar){
+            return(
+                <MainSidebar/>
+            );
+        }else if(this.state.patientSidebar){
+            return(
+                <PatientSidebar/>
+            );
+        }else{
+            return(
+                <div>ERROR</div>
+            );
+        }
+        
+    }
+    changeToPatientSidebar(){
+        this.setState({
+            patientSidebar:true,
+            mainSidebar:false
         });
     }
-
+    changeToMainSidebar(){
+        this.setState({
+            patientSidebar:false,
+            mainSidebar:true
+        });
+    }
     handleToggle() {
         this.setState({ sidebar: 'active' }, () => {
             $('#sidebar').toggleClass('active');
@@ -27,59 +52,14 @@ export default class Dashboard extends React.Component {
         });
 
     }
-    render() {
-        return (
-            <div className="wrapper">
-                <nav id="sidebar">
-                    <div className="sidebar-header">
-                        <h3>Dr. Matamoros</h3>
-                    </div>
-                    <ul className="list-unstyled components bar">
-                        <p className="bar">San Felipe</p>
 
-                        <li className="bar">
-                            <a className="bar" href="#">Motivo de Consulta</a>
-                        </li>
-                        <li className="bar">
-                            <a href="#records" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle bar">Antecedentes</a>
-                            <ul className="collapse list-unstyled bar" id="records">
-                                <li className="bar">
-                                    <a className="bar" href="#">Antecedentes personales patológicos</a>
-                                </li>
-                                <li className="bar">
-                                    <a className="bar" href="#">Antecedentes personales no patológicos</a>
-                                </li>
-                                <li className="bar">
-                                    <a className="bar" href="#">Antecedentes heredo familiares</a>
-                                </li>
-                                <li className="bar">
-                                    <a className="bar" href="#">Antecedentes quirúrgicos o traumáticos</a>
-                                </li>
-                                <li className="bar">
-                                    <a className="bar" href="#">Antecedentes de salud sexual y reproductiva (mujeres)</a>
-                                </li>
-                                <li className="bar">
-                                    <a className="bar" href="#">Antecedentes perinatales</a>
-                                </li>
-                                <li className="bar">
-                                    <a className="bar" href="#">Antecedentes laborales</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li className="bar">
-                            <a className="bar" href="#">Examen físico</a>
-                        </li>
-                        <li className="bar">
-                            <a className="bar" href="#">Antropometría y Signos vitales</a>
-                        </li>
-                        <li className="bar">
-                            <a className="bar" href="#">Diágnostico</a>
-                        </li>
-                        <li className="bar">
-                            <a className="bar" href="#">Análisis</a>
-                        </li>
-                    </ul>
-                </nav>
+
+    render() {
+
+        return (
+
+            <div className="wrapper">
+                {this.renderSidebar()}
                 <div id="content">
                     <nav className="navbar navbar-expand-lg navbar-light  nav-white-background">
                         <div className="container-fluid">
@@ -88,16 +68,16 @@ export default class Dashboard extends React.Component {
                             </button>
                             <ul className="navbar-nav">
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#">Pacientes</a>
+                                    <a className="nav-link" href="#" onClick={this.changeToPatientSidebar.bind(this)}>Pacientes</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#">Expedientes</a>
+                                    <a className="nav-link" href="#" onClick={this.changeToMainSidebar.bind(this)}>Expedientes</a>
                                 </li>
                             </ul>
                         </div>
                     </nav>
                     <div className="container">
-                            { this.props.children }
+                        {this.props.children}
                     </div>
                 </div>
             </div>
