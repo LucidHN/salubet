@@ -11,7 +11,8 @@ export default class Dashboard extends React.Component {
     state = {
 
         patientSidebar: false,
-        mainSidebar: true
+        mainSidebar: true,
+        activebar:false
     }
 
 
@@ -32,19 +33,24 @@ export default class Dashboard extends React.Component {
         
     }
     changeToPatientSidebar(){
-        this.setState({
-            patientSidebar:true,
-            mainSidebar:false
-        });
+        if(!this.state.activebar){
+            this.setState({
+                patientSidebar:true,
+                mainSidebar:false
+            });
+        }
     }
     changeToMainSidebar(){
-        this.setState({
-            patientSidebar:false,
-            mainSidebar:true
-        });
+        if(!this.state.activebar){
+            this.setState({
+                patientSidebar:false,
+                mainSidebar:true
+            });
+        }
+        
     }
     handleToggle() {
-        this.setState({ sidebar: 'active' }, () => {
+        this.setState({ sidebar: 'active', activebar:!this.state.activebar }, () => {
             $('#sidebar').toggleClass('active');
             $('#content').toggleClass('active');
             $('.collapse.in').toggleClass('in');
