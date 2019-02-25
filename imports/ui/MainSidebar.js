@@ -1,35 +1,26 @@
 import React from 'react';
+import { withTracker } from 'meteor/react-meteor-data';
 
-import Home from './Home';
-import RegisterPatients from './RegisterPatients';
-
-export default class MainSidebar extends React.Component {
+export class MainSidebar extends React.Component {
     state = {
         sidebar: 'inactive'
     }
-
-
     componentDidMount() {
         $("#sidebar").mCustomScrollbar({
             theme: "minimal"
         });
     }
-
-    
     render() {
         return (
-            
                 <nav id="sidebar">
                     <div className="sidebar-header">
-                        <h3>Dr. Matamoros</h3>
+                        <h3>Dr. { this.props.user ? this.props.user.profile.name : null }</h3>
                     </div>
                     <ul className="list-unstyled components bar">
                         <p className="bar">San Felipe</p>
-
                         <li className="bar">
                             <a className="bar" href="#">Información General</a>
                         </li>
-
                         <li className="bar">
                             <a className="bar" href="#">Motivo de Consulta</a>
                         </li>
@@ -73,8 +64,10 @@ export default class MainSidebar extends React.Component {
                         </li>
                     </ul>
                 </nav>
-                
-            
         );
     }
-}
+};
+
+export default withTracker(() => ({
+    user: Meteor.user()
+}))(MainSidebar);

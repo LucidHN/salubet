@@ -1,7 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { withTracker } from 'meteor/react-meteor-data';
 
-export default class PatientSidebar extends React.Component {
+export class PatientSidebar extends React.Component {
     state = {
         sidebar: 'inactive'
     }
@@ -14,7 +15,7 @@ export default class PatientSidebar extends React.Component {
         return (
                 <nav id="sidebar">
                     <div className="sidebar-header">
-                        <h3>Dr. Matamoros</h3>
+                        <h3>Dr. { this.props.user ? this.props.user.profile.name : null }</h3>
                     </div>
                     <ul className="list-unstyled components bar">
                         <p className="bar">San Felipe</p>
@@ -33,3 +34,7 @@ export default class PatientSidebar extends React.Component {
         );
     }
 };
+
+export default withTracker(() => ({
+    user: Meteor.user()
+}))(PatientSidebar);

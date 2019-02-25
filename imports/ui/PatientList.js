@@ -1,17 +1,19 @@
 import React from 'react';
+import { withTracker } from 'meteor/react-meteor-data';
+import { Meteor } from 'meteor/meteor';
 
-export default class PatientList extends React.Component {
+import { Patients } from '../api/patients';
 
-    renderRows = () => {
-        return (
-            <tr>
-                <th scope="row">Jonathan Andre Mendoza Ferrera</th>
-                <td>0801-1950-05785</td>
+export class PatientList extends React.Component {
+    renderRows = () => (
+        this.props.patients.map((patient) => (
+            <tr key={patient._id}>
+                <th scope="row">{ patient.name }</th>
+                <td>{ patient.id }</td>
                 <td><button className="btn btn-success btn-round">VER EXPEDIENTE</button></td>
             </tr>
-        );
-    }
-
+        ))
+    )
     render() {
         return (
             <div className="row">
@@ -28,9 +30,15 @@ export default class PatientList extends React.Component {
                             {this.renderRows()}
                         </tbody>
                     </table>
-
                 </div>
             </div>
         );
     }
 };
+
+export default withTracker(() => {
+    Meteor.subscribe('patients');
+    return {
+        patients: Patients.find({}).fetch()
+    };
+})(PatientList);
