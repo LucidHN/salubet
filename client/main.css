@@ -3,10 +3,17 @@
 *::before {
     margin: 0;
     padding: 0;
-    box-sizing: inherit;
 }
 
-html, body {margin: 0; height: 100%; overflow: hidden}
+
+
+
+
+.btn-round{
+  border-radius: 10rem !important;
+}
+
+html, body {margin: 0; height: 100%;}
 
 body {
   font-family: sans-serif;
@@ -85,7 +92,6 @@ body {
 }
 
 .wrapper {
-  display: flex;
   width: 100%;
   align-items: stretch;
 }

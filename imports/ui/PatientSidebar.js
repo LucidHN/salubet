@@ -25,7 +25,7 @@ export default class PatientSidebar extends React.Component {
                             <NavLink className="bar" to="/registerPatients">Crear paciente</NavLink>
                         </li>
                         <li className="bar">
-                            <a className="bar" href="#">Lista de pacientes</a>
+                            <NavLink className="bar" to="/patientList">Lista de pacientes</NavLink>
                         </li>
                         
                     </ul>
