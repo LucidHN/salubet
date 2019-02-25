@@ -69,9 +69,11 @@ export default class Dashboard extends React.Component {
                             </ul>
                         </div>
                     </nav>
-                    <div className="container">
+                    <div className = "container ">
                         {this.props.children}
                     </div>
+                        
+                    
                 </div>
             </div>
         );
