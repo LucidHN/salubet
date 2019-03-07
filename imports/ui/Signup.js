@@ -56,17 +56,17 @@ export class Signup extends React.Component {
                                 </div>
                                 <h2 className="text-center">Signup</h2>
                                 <div className="form-group">
-                                    <label>Name</label>
+                                    
                                     <input
                                         type="text"
-                                        className="form-control bmd-label-floating"
+                                        className="form-control bmd-label-floating input-login"
                                         id="name" aria-describedby="userName"
-                                        placeholder="Enter full name"
+                                        placeholder="Nombre completo"
                                         onChange={(event) => this.setState({ name: event.target.value })}
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <label>Medical Center</label><br/>
+                                    <label>Centro médico</label><br/>
                                     <div className="form-check mb-1 form-check-inline">
                                         <input
                                             className="form-check-input"
@@ -87,48 +87,48 @@ export class Signup extends React.Component {
                                             value="clinic"
                                             onChange={(event) => this.setState({ medicalCenterType: event.target.value })}
                                         />
-                                        <label className="form-check-label" htmlFor="clinic">Clinic</label>
+                                        <label className="form-check-label" htmlFor="clinic">Clínica</label>
                                     </div>
-                                    <select className="form-control mt-2 mb-2" id="medicalCenter">
-                                        <option value="default" >Available Medical Centers</option>
-                                        <option value="HMS" onClick={(event) => (this.handleMedicalCenterDropdown(event, 'HMS'))}>HMS</option>
-                                        <option value="San Felipe" onClick={(event) => (this.handleMedicalCenterDropdown(event, 'San Felipe'))}>San Felipe</option>
-                                        <option value="Medical Center" onClick={(event) => (this.handleMedicalCenterDropdown(event, 'Medical Center'))}>Medical Center</option>
+                                    <select className="form-control mt-2 mb-2 select-signup" id="medicalCenter">
+                                        <option className = "option-signup" value="default" >Centros médicos disponibles</option>
+                                        <option className = "option-signup" value="HMS" onClick={(event) => (this.handleMedicalCenterDropdown(event, 'HMS'))}>HMS</option>
+                                        <option className = "option-signup" value="San Felipe" onClick={(event) => (this.handleMedicalCenterDropdown(event, 'San Felipe'))}>San Felipe</option>
+                                        <option className = "option-signup" value="Medical Center" onClick={(event) => (this.handleMedicalCenterDropdown(event, 'Medical Center'))}>Medical Center</option>
                                     </select>
                                 </div>
                                 <div className="form-group">
-                                    <label>Email address</label>
+                                
                                     <input
                                         type="email"
-                                        className="form-control bmd-label-floating"
+                                        className="form-control bmd-label-floating input-login"
                                         id="email"
                                         aria-describedby="emailHelp"
-                                        placeholder="Enter email"
+                                        placeholder="Correo electrónico"
                                         onChange={(event) => this.setState({ email: event.target.value })}
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <label>Password</label>
+                                    
                                     <input
                                         type="password"
-                                        className="form-control"
+                                        className="form-control input-login"
                                         id="password"
-                                        placeholder="Password"
+                                        placeholder="Contraseña"
                                         onChange={(event) => this.setState({ password: event.target.value })}
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <label>Confirm Password</label>
+                                    
                                     <input
                                         type="password"
-                                        className="form-control"
+                                        className="form-control input-login"
                                         id="confirmPassword"
-                                        placeholder="Confirm password"
+                                        placeholder="Confirmar contraseña"
                                         onChange={(event) => this.setState({ confirmPassword: event.target.value })}
                                     />
                                 </div>
                                 
-                                <button type="submit" className="btn btn-outline-primary submit-button btn-outline-secondary">Submit</button>
+                                <button type="submit" className="btn btn-outline-primary submit-button btn-outline-secondary">Registrarse</button>
                                 
                             </form>
                         </div>

@@ -24,9 +24,28 @@
 }
 
 .input-login::placeholder {
-  color: #EFECEC !important;
+  color: rgba(239, 236, 236, 0.808) !important;
 }
 
+.select-signup {
+  background: transparent !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom: 1px solid #EFECEC !important;
+  border-radius: 0% !important; 
+  color: rgb(255, 255, 255) !important;
+}
+
+.select-signup:focus {
+  outline: 0 !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.option-signup{
+  color: black;
+}
 
 
 

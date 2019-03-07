@@ -42,7 +42,7 @@ export class Login extends React.Component {
                                         className="form-control input-login" 
                                         id="email" 
                                         aria-describedby="emailHelp" 
-                                        placeholder="Correo"
+                                        placeholder="Correo electrónico"
                                         onChange={(event) => this.setState({ email: event.target.value })}
                                     />
                                 </div>
