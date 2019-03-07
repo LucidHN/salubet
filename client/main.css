@@ -6,6 +6,27 @@
 }
 
 
+.input-login, .input-login:focus {
+  background: transparent !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom: 1px solid #EFECEC !important;
+  border-radius: 0% !important; 
+  color: white !important;
+  
+}
+
+.input-login:focus {
+  outline: 0 !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.input-login::placeholder {
+  color: #EFECEC !important;
+}
+
 
 
 
@@ -52,8 +73,8 @@ body {
   width: 50%;
   margin: 0 auto !important;
   border-radius: 10rem !important;
-  background-color: lightgrey !important;
-  border-color: lightgrey !important;
+  background-color: rgba(211, 211, 211, 0.9) !important;
+  border-color: transparent !important;
   color: #3BAB83 !important;
   font-size: 20px !important;
 }

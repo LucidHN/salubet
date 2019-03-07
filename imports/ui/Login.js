@@ -36,27 +36,26 @@ export class Login extends React.Component {
                                 <h3 className="text-center login-header">Bienvenido a la plataforma Salubet</h3>
                                 <h3 className="text-center login-header">Expedientes</h3>
                                 <div className="form-group">
-                                    <label>Email address</label>
+                                    
                                     <input 
                                         type="email" 
-                                        className="form-control" 
+                                        className="form-control input-login" 
                                         id="email" 
                                         aria-describedby="emailHelp" 
-                                        placeholder="Enter email"
+                                        placeholder="Correo"
                                         onChange={(event) => this.setState({ email: event.target.value })}
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <label>Password</label>
                                     <input 
                                         type="password" 
-                                        className="form-control" 
+                                        className="form-control input-login" 
                                         id="password" 
-                                        placeholder="Password" 
+                                        placeholder="Contraseña" 
                                         onChange={(event) => this.setState({ password: event.target.value })}
                                         />
                                 </div>
-                                <button type="submit" className="btn btn-outline-primary submit-button">Submit</button>
+                                <button type="submit" className="btn btn-outline-primary submit-button">Continuar</button>
                             </form>
                         </div>
                     </div>
