@@ -51,10 +51,9 @@ export class Signup extends React.Component {
                     <div className="row justify-content-md-center signup-form-container">
                         <div className="col-sm-12 col-md-6 col-lg-6 align-self-center signup-form-container">
                             <form onSubmit={this.onSubmit}>
-                                <div className="salubet-logo-box">
+                                <div className="salubet-logo-box mb-md-5 mb-lg-5">
                                     <img src="/theme_images/logo_blanco.png" className="salubet-logo"></img>
                                 </div>
-                                <h2 className="text-center">Signup</h2>
                                 <div className="form-group">
                                     
                                     <input
