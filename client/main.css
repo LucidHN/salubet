@@ -178,7 +178,6 @@ nav.nav-white-background{
   background: #fff;
 }
 
-
 @media (max-width: 768px) {
   #sidebar {
       margin-left: -250px;
@@ -193,4 +192,18 @@ nav.nav-white-background{
   #content.active{
     margin-left: 250px;
   }
+}
+
+#search {
+  margin-bottom: 10px;
+}
+
+#search-input {
+  width: 100%;
+  height: 100%;
+}
+
+#search-btn {
+  background-color: #3BAB83;
+  height: 100%;
 }
