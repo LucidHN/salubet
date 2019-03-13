@@ -5,17 +5,13 @@ import { Meteor } from 'meteor/meteor';
 import { Patients } from '../api/patients';
 
 export class PatientSearch extends React.Component {
-
     state = {
         searchQuery: '',
         errorMessage: '',
         loading: false,
         filteredPatients: []
-
     }
-
     searchPatients = Meteor.subscribe('searchPatients', this.state.searchQuery);
-
     onSubmit = (event) => {
         event.preventDefault();
         let searchQuery = this.state.searchQuery.trim();
@@ -26,7 +22,6 @@ export class PatientSearch extends React.Component {
             filteredPatients
         });
     }
-
     renderRows = () => (
         this.state.filteredPatients.map((patient) => (
             <tr key={patient._id}>
@@ -36,7 +31,6 @@ export class PatientSearch extends React.Component {
             </tr>
         ))
     )
-
     render() {
         return (
             <div className="row">
@@ -54,7 +48,6 @@ export class PatientSearch extends React.Component {
                         <div className="col-lg-1 col-md-1 col-sm-1">
                             <button type="submit" id="search-btn" className="btn">Buscar</button>
                         </div>
-                        
                     </div>
                     </form>
                     <table className="table table-hover">
