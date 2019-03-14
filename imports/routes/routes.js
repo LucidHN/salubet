@@ -3,6 +3,7 @@ import { Router, Route, Switch } from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory';
 
 import Dashboard from '../ui/Dashboard';
+import ForgotPassword from '../ui/ForgotPassword';
 import Home from '../ui/Home';
 import RegisterPatients from '../ui/RegisterPatients';
 import Login from '../ui/Login';
@@ -19,6 +20,7 @@ export const routes = (
         <Switch >
             <Route exact path="/" component={Login} />
             <Route exact path="/signup" component={Signup} />
+            <Route exact path="/forgotPassword" component={ForgotPassword} />
             <LayoutRoute exact path="/home"  layout={Dashboard} component={Home}/>
             <LayoutRoute exact path="/registerPatients" layout={Dashboard} component={RegisterPatients}/>
             <LayoutRoute exact path="/patientList" layout={Dashboard} component={PatientList}/>

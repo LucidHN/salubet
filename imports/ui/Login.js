@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { withTracker } from 'meteor/react-meteor-data';
 
 import { history } from '../routes/routes';
@@ -16,9 +17,13 @@ export class Login extends React.Component {
         let password = this.state.password;
         this.props.loginWithPassword({ email }, password, (err) => {
             if (err) {
-                this.setState({error: 'Unable to login. Check email and password.'});
+                this.setState({ 
+                    error: 'Unable to login. Check email or password.',
+                    email: '',
+                    password: ''
+                });
             }else {
-                this.setState({error: ''});
+                this.setState({ error: ''});
                 history.push('/home');
             }
         });
@@ -29,6 +34,7 @@ export class Login extends React.Component {
                 <div className="container absolute-center signup-content-container">
                     <div className="row justify-content-md-center">
                         <div className="col-sm-12 col-md-6 col-lg-6 align-self-center">
+                            { this.state.error ? <p>{this.state.error}</p> : null }
                             <form onSubmit={this.onSubmit}>
                                 <div id="salubet-logo-login" className="salubet-logo-box">
                                     <img src="/theme_images/logo_blanco.png" className="salubet-logo"></img>
@@ -43,6 +49,7 @@ export class Login extends React.Component {
                                         id="email" 
                                         aria-describedby="emailHelp" 
                                         placeholder="Enter email"
+                                        value={this.state.email}
                                         onChange={(event) => this.setState({ email: event.target.value })}
                                     />
                                 </div>
@@ -53,9 +60,11 @@ export class Login extends React.Component {
                                         className="form-control" 
                                         id="password" 
                                         placeholder="Password" 
+                                        value={this.state.password}
                                         onChange={(event) => this.setState({ password: event.target.value })}
                                         />
                                 </div>
+                                <NavLink to="/forgotPassword">Forgot your password?</NavLink>
                                 <button type="submit" className="btn btn-outline-primary submit-button">Submit</button>
                             </form>
                         </div>
