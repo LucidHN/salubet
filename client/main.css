@@ -5,6 +5,32 @@
     padding: 0;
 }
 
+#preloader{
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+
+}
+
+#status{
+  background-image: url('https://a.uguu.se/nIF0eoyPxdgl.gif');
+  background-repeat: no-repeat;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -100px;
+  margin-left: -100px;
+
+  
+}
+
+
 
 .input-login, .input-login:focus {
   background: transparent !important;

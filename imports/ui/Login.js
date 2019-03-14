@@ -8,8 +8,18 @@ export class Login extends React.Component {
         email: '',
         errorMessage: false,
         loading: false,
-        password: ''
+        password: '',
+        loaded:false
     }
+    componentDidMount(){
+        $(window).on('load', function(){
+            $('#status').fadeOut();
+            $('#preloader').fadeOut();
+        });
+        
+        
+    }
+
     onSubmit = (event) => {
         event.preventDefault();
         let email = this.state.email.trim();
@@ -26,6 +36,7 @@ export class Login extends React.Component {
     render() {
         return (
             <div className="signup-container">
+                <div id ="preloader"><div id="status"></div></div>
                 <div className="container absolute-center signup-content-container">
                     <div className="row justify-content-md-center">
                         <div className="col-sm-12 col-md-6 col-lg-6 align-self-center">
