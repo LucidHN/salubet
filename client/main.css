@@ -5,7 +5,7 @@
     padding: 0;
 }
 
-#preloader{
+.preloader{
   background-color: white;
   position: fixed;
   top: 0;
@@ -16,7 +16,7 @@
 
 }
 
-#status{
+.status{
   background-image: url('https://a.uguu.se/nIF0eoyPxdgl.gif');
   background-repeat: no-repeat;
   width: 200px;
@@ -26,10 +26,17 @@
   top: 50%;
   margin-top: -100px;
   margin-left: -100px;
-
   
 }
 
+#linkSignup{
+  background-color: transparent;
+  color: #EFECEC;
+  display: block;
+  left: 50%;
+  margin-top: 15px
+
+}
 
 
 .input-login, .input-login:focus {

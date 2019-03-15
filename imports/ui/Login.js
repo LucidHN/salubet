@@ -1,6 +1,6 @@
 import React from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
-
+import { Link } from 'react-router-dom';
 import { history } from '../routes/routes';
 
 export class Login extends React.Component {
@@ -12,12 +12,8 @@ export class Login extends React.Component {
         loaded:false
     }
     componentDidMount(){
-        $(window).on('load', function(){
-            $('#status').fadeOut();
-            $('#preloader').fadeOut();
-        });
-        
-        
+        $('.status').fadeOut();
+        $('.preloader').fadeOut();
     }
 
     onSubmit = (event) => {
@@ -36,7 +32,7 @@ export class Login extends React.Component {
     render() {
         return (
             <div className="signup-container">
-                <div id ="preloader"><div id="status"></div></div>
+                <div className ="preloader"><div className="status"></div></div>
                 <div className="container absolute-center signup-content-container">
                     <div className="row justify-content-md-center">
                         <div className="col-sm-12 col-md-6 col-lg-6 align-self-center">
@@ -67,6 +63,7 @@ export class Login extends React.Component {
                                         />
                                 </div>
                                 <button type="submit" className="btn btn-outline-primary submit-button">Continuar</button>
+                                <Link id="linkSignup" className="text-center" to="/signup">Registrarse</Link>
                             </form>
                         </div>
                     </div>

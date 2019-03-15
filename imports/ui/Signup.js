@@ -1,7 +1,7 @@
 import React from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
-
+import { Link } from 'react-router-dom';
 import { history } from '../routes/routes';
 
 export class Signup extends React.Component {
@@ -40,6 +40,10 @@ export class Signup extends React.Component {
             });
         }
     }
+    componentDidMount(){
+            $('.status').fadeOut();
+            $('.preloader').fadeOut();
+    }
     handleMedicalCenterDropdown = (event, medicalCenter) => {
         event.preventDefault();
         this.setState({ medicalCenter });
@@ -47,6 +51,7 @@ export class Signup extends React.Component {
     render() {
         return (
             <div className="signup-container">
+            <div className ="preloader"><div className="status"></div></div>
                 <div className="container absolute-center signup-content-container">
                     <div className="row justify-content-md-center signup-form-container">
                         <div className="col-sm-12 col-md-6 col-lg-6 align-self-center signup-form-container">
@@ -128,6 +133,7 @@ export class Signup extends React.Component {
                                 </div>
                                 
                                 <button type="submit" className="btn btn-outline-primary submit-button btn-outline-secondary">Registrarse</button>
+                                <Link id="linkSignup" className="text-center" to="/">Iniciar sesión</Link>
                                 
                             </form>
                         </div>
