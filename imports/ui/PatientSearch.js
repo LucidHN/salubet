@@ -7,20 +7,21 @@ import { Patients } from '../api/patients';
 export class PatientSearch extends React.Component {
     state = {
         searchQuery: '',
-        errorMessage: '',
+        error: '',
         loading: false,
         filteredPatients: []
     }
-    searchPatients = Meteor.subscribe('searchPatients', this.state.searchQuery);
     onSubmit = (event) => {
         event.preventDefault();
         let searchQuery = this.state.searchQuery.trim();
-        let filteredPatients = this.props.patients.filter((patient) => {
-            return patient.id.includes(searchQuery);
+        this.props.call('patients.search', searchQuery, (error, result) => {
+            if(!error){
+                this.setState({filteredPatients: result});
+            }else{
+                this.setState({error: error.message});
+            }
         });
-        this.setState({
-            filteredPatients
-        });
+        
     }
     renderRows = () => (
         this.state.filteredPatients.map((patient) => (
@@ -70,7 +71,9 @@ export class PatientSearch extends React.Component {
 
 export default withTracker(() => {
     Meteor.subscribe('patients');
+    
     return {
-        patients: Patients.find({}).fetch()
+        patients: Patients.find({}).fetch(),
+        call: Meteor.call
     };
 })(PatientSearch);

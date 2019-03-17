@@ -41,5 +41,12 @@ Meteor.methods({
         return Patients.insert({
             ...patient
         });
+    },
+
+    'patients.search'(query) {
+        if (!this.userId && !Roles.userIsInRole(this.userId, 'admin')) {
+            throw new Meteor.Error('not-authorized');
+        }
+        return Patients.find({ $or: [ { "name": {$regex: `.*${query}.*`} }, { "id": {$regex: `.*${query}.*`}} ] }).fetch();
     }
 });
