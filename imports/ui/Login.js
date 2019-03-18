@@ -1,6 +1,7 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { withTracker } from 'meteor/react-meteor-data';
-
+import { Link } from 'react-router-dom';
 import { history } from '../routes/routes';
 
 export class Login extends React.Component {
@@ -8,17 +9,27 @@ export class Login extends React.Component {
         email: '',
         errorMessage: false,
         loading: false,
-        password: ''
+        password: '',
+        loaded:false
     }
+    componentDidMount(){
+        $('.status').fadeOut();
+        $('.preloader').fadeOut();
+    }
+
     onSubmit = (event) => {
         event.preventDefault();
         let email = this.state.email.trim();
         let password = this.state.password;
         this.props.loginWithPassword({ email }, password, (err) => {
             if (err) {
-                this.setState({error: 'Unable to login. Check email and password.'});
+                this.setState({ 
+                    error: 'Unable to login. Check email or password.',
+                    email: '',
+                    password: ''
+                });
             }else {
-                this.setState({error: ''});
+                this.setState({ error: ''});
                 history.push('/home');
             }
         });
@@ -26,37 +37,40 @@ export class Login extends React.Component {
     render() {
         return (
             <div className="signup-container">
+                <div className ="preloader"><div className="status"></div></div>
                 <div className="container absolute-center signup-content-container">
                     <div className="row justify-content-md-center">
                         <div className="col-sm-12 col-md-6 col-lg-6 align-self-center">
+                            { this.state.error ? <p>{this.state.error}</p> : null }
                             <form onSubmit={this.onSubmit}>
-                                <div id="salubet-logo-login" className="salubet-logo-box">
-                                    <img src="/theme_images/logo_blanco.png" className="salubet-logo"></img>
-                                </div>
+                                
+                                <img src="/theme_images/logo_blanco1.png" className="salubet-logo text-center"></img>
+                                
                                 <h3 className="text-center login-header">Bienvenido a la plataforma Salubet</h3>
                                 <h3 className="text-center login-header">Expedientes</h3>
                                 <div className="form-group">
-                                    <label>Email address</label>
+                                    
                                     <input 
                                         type="email" 
-                                        className="form-control" 
+                                        className="form-control input-login" 
                                         id="email" 
                                         aria-describedby="emailHelp" 
-                                        placeholder="Enter email"
+                                        placeholder="Correo electrónico"
                                         onChange={(event) => this.setState({ email: event.target.value })}
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <label>Password</label>
                                     <input 
                                         type="password" 
-                                        className="form-control" 
+                                        className="form-control input-login" 
                                         id="password" 
-                                        placeholder="Password" 
+                                        placeholder="Contraseña" 
                                         onChange={(event) => this.setState({ password: event.target.value })}
                                         />
                                 </div>
-                                <button type="submit" className="btn btn-outline-primary submit-button">Submit</button>
+                                <button type="submit" className="btn btn-outline-primary submit-button">Continuar</button>
+                                <Link id="linkSignup" className="text-center links-login" to="/signup">Registrarse</Link>
+                                <Link className="text-center links-login" to="/forgotPassword">Olvidé mi contraseña</Link>
                             </form>
                         </div>
                     </div>

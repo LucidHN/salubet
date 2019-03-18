@@ -20,7 +20,7 @@ export class PatientSidebar extends React.Component {
                     <ul className="list-unstyled components bar">
                         <p className="bar">San Felipe</p>
                         <li className="bar">
-                            <NavLink className="bar" to="/home">Buscar paciente</NavLink>
+                            <NavLink className="bar" to="/searchPatients">Buscar paciente</NavLink>
                         </li>
                         <li className="bar">
                             <NavLink className="bar" to="/registerPatients">Crear paciente</NavLink>
