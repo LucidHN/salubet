@@ -4,7 +4,8 @@ import { Meteor } from 'meteor/meteor';
 import { Link } from 'react-router-dom';
 import { history } from '../routes/routes';
 
-import Preloader from './Preloader'
+import Preloader from './Preloader';
+import ErrorAlert from './ErrorAlert';
 
 export class Signup extends React.Component {
     state = {
@@ -14,7 +15,7 @@ export class Signup extends React.Component {
         name: '',
         medicalCenterType: '',
         medicalCenter: '',
-        errorMessage: false,
+        error: '',
         loading: false
     }
     onSubmit = async (event) => {
@@ -30,20 +31,22 @@ export class Signup extends React.Component {
                 }
             };
             await this.props.call('user.createUser', user, (error) => {
+                console.log(error);
                 if (error) {
                     this.setState({
                         loading: false,
-                        errorMessage: error.message
+                        error: error.message
                     });
                 } else {
                     this.setState({ loading: false });
                     history.push('/');
                 }
             });
+        } else {
+            this.setState({ error: 'Passwords don\'t match.' })
         }
     }
-    
-    handleMedicalCenterDropdown = (event, medicalCenter) => {
+    handleMedicalCenterDropdown = (event) => {
         event.preventDefault();
         this.setState({ medicalCenter });
     }
@@ -51,6 +54,7 @@ export class Signup extends React.Component {
         return (
             <div className="signup-container">
                 <Preloader/>
+                { this.state.error ? <ErrorAlert message={this.state.error}/> : null }
                 <div className="container absolute-center signup-content-container">
                     <div className="row justify-content-md-center signup-form-container">
                         <div className="col-sm-12 col-md-6 col-lg-6 align-self-center signup-form-container">
@@ -92,11 +96,11 @@ export class Signup extends React.Component {
                                         />
                                         <label className="form-check-label" htmlFor="clinic">Clínica</label>
                                     </div>
-                                    <select className="form-control mt-2 mb-2 select-signup" id="medicalCenter">
-                                        <option className = "option-signup" value="default" >Centros médicos disponibles</option>
-                                        <option className = "option-signup" value="HMS" onClick={(event) => (this.handleMedicalCenterDropdown(event, 'HMS'))}>HMS</option>
-                                        <option className = "option-signup" value="San Felipe" onClick={(event) => (this.handleMedicalCenterDropdown(event, 'San Felipe'))}>San Felipe</option>
-                                        <option className = "option-signup" value="Medical Center" onClick={(event) => (this.handleMedicalCenterDropdown(event, 'Medical Center'))}>Medical Center</option>
+                                    <select className="form-control mt-2 mb-2 select-signup" id="medicalCenter" onChange={this.handleMedicalCenterDropdown}>
+                                        <option className = "option-signup" value="default">Centros médicos disponibles</option>
+                                        <option className = "option-signup" value="HMS">HMS</option>
+                                        <option className = "option-signup" value="San Felipe">San Felipe</option>
+                                        <option className = "option-signup" value="Medical Center">Medical Center</option>
                                     </select>
                                 </div>
                                 <div className="form-group">
