@@ -53,17 +53,18 @@ export class Signup extends React.Component {
     render() {
         return (
             <div className="signup-container">
-                <Preloader/>
-                { this.state.error ? <ErrorAlert message={this.state.error}/> : null }
+                <Preloader />
+
                 <div className="container absolute-center signup-content-container">
                     <div className="row justify-content-md-center signup-form-container">
                         <div className="col-sm-12 col-md-6 col-lg-6 align-self-center signup-form-container">
+                            {this.state.error ? <ErrorAlert message={this.state.error} /> : null}
                             <form onSubmit={this.onSubmit}>
-                                
+
                                 <img src="/theme_images/logo_blanco1.png" className="salubet-logo"></img>
-                                
+
                                 <div className="form-group">
-                                    
+
                                     <input
                                         type="text"
                                         className="form-control bmd-label-floating input-login"
@@ -73,7 +74,7 @@ export class Signup extends React.Component {
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <label>Centro médico</label><br/>
+                                    <label>Centro médico</label><br />
                                     <div className="form-check mb-1 form-check-inline">
                                         <input
                                             className="form-check-input"
@@ -97,14 +98,14 @@ export class Signup extends React.Component {
                                         <label className="form-check-label" htmlFor="clinic">Clínica</label>
                                     </div>
                                     <select className="form-control mt-2 mb-2 select-signup" id="medicalCenter" onChange={this.handleMedicalCenterDropdown}>
-                                        <option className = "option-signup" value="default">Centros médicos disponibles</option>
-                                        <option className = "option-signup" value="HMS">HMS</option>
-                                        <option className = "option-signup" value="San Felipe">San Felipe</option>
-                                        <option className = "option-signup" value="Medical Center">Medical Center</option>
+                                        <option className="option-signup" value="default">Centros médicos disponibles</option>
+                                        <option className="option-signup" value="HMS">HMS</option>
+                                        <option className="option-signup" value="San Felipe">San Felipe</option>
+                                        <option className="option-signup" value="Medical Center">Medical Center</option>
                                     </select>
                                 </div>
                                 <div className="form-group">
-                                
+
                                     <input
                                         type="email"
                                         className="form-control bmd-label-floating input-login"
@@ -115,7 +116,7 @@ export class Signup extends React.Component {
                                     />
                                 </div>
                                 <div className="form-group">
-                                    
+
                                     <input
                                         type="password"
                                         className="form-control input-login"
@@ -125,7 +126,7 @@ export class Signup extends React.Component {
                                     />
                                 </div>
                                 <div className="form-group">
-                                    
+
                                     <input
                                         type="password"
                                         className="form-control input-login"
@@ -134,10 +135,10 @@ export class Signup extends React.Component {
                                         onChange={(event) => this.setState({ confirmPassword: event.target.value })}
                                     />
                                 </div>
-                                
+
                                 <button type="submit" className="btn btn-outline-primary submit-button btn-outline-secondary">Registrarse</button>
                                 <Link id="linkSignup" className="text-center links-login" to="/">Iniciar sesión</Link>
-                                
+
                             </form>
                         </div>
                     </div>
