@@ -6,21 +6,26 @@ export class RegisterPatients extends React.Component {
     state = {
         name: '',
         birthDate: '',
-        id: ''
+        id: '',
+        error: ''
     }
     onSubmit = () => {
+        this.state.error ? this.setState({ error: '' }) : null
         event.preventDefault();
-        this.props.call('patients.add', { ...this.state});
+        this.props.call('patients.add', { ...this.state}, (error) => (
+                error ? this.setState({ error: error.message }) : null
+            )
+        );
         this.setState({
             name: '',
             birthDate: '',
             id: ''
         });
-        
     }
     render() {
         return (
             <div className="register-patients-container">
+                {this.state.error ? <p>{this.state.error}</p> : null}
                 <form onSubmit={this.onSubmit} >
                     <div className="row">
                         <div className="col-sm-12 col-md-7 col-lg-7">

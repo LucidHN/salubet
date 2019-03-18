@@ -7,5 +7,11 @@ Meteor.methods({
     },
     async 'user.isDoctor'() {
         return await Roles.userIsInRole(Meteor.userId(), 'doctor');
+    },
+    async 'user.findUserByEmail'(email) {
+        return await Accounts.findUserByEmail(email);
+    },
+    async 'user.sendResetPasswordEmail'(id) {
+        return await Accounts.sendResetPasswordEmail(id)
     }
 });
