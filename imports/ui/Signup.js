@@ -1,7 +1,7 @@
 import React from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
-
+import { Link } from 'react-router-dom';
 import { history } from '../routes/routes';
 
 export class Signup extends React.Component {
@@ -40,6 +40,10 @@ export class Signup extends React.Component {
             });
         }
     }
+    componentDidMount(){
+            $('.status').fadeOut();
+            $('.preloader').fadeOut();
+    }
     handleMedicalCenterDropdown = (event, medicalCenter) => {
         event.preventDefault();
         this.setState({ medicalCenter });
@@ -47,26 +51,26 @@ export class Signup extends React.Component {
     render() {
         return (
             <div className="signup-container">
+            <div className ="preloader"><div className="status"></div></div>
                 <div className="container absolute-center signup-content-container">
                     <div className="row justify-content-md-center signup-form-container">
                         <div className="col-sm-12 col-md-6 col-lg-6 align-self-center signup-form-container">
                             <form onSubmit={this.onSubmit}>
-                                <div className="salubet-logo-box">
-                                    <img src="/theme_images/logo_blanco.png" className="salubet-logo"></img>
-                                </div>
-                                <h2 className="text-center">Signup</h2>
+                                
+                                <img src="/theme_images/logo_blanco1.png" className="salubet-logo"></img>
+                                
                                 <div className="form-group">
-                                    <label>Name</label>
+                                    
                                     <input
                                         type="text"
-                                        className="form-control bmd-label-floating"
+                                        className="form-control bmd-label-floating input-login"
                                         id="name" aria-describedby="userName"
-                                        placeholder="Enter full name"
+                                        placeholder="Nombre completo"
                                         onChange={(event) => this.setState({ name: event.target.value })}
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <label>Medical Center</label><br/>
+                                    <label>Centro médico</label><br/>
                                     <div className="form-check mb-1 form-check-inline">
                                         <input
                                             className="form-check-input"
@@ -87,48 +91,49 @@ export class Signup extends React.Component {
                                             value="clinic"
                                             onChange={(event) => this.setState({ medicalCenterType: event.target.value })}
                                         />
-                                        <label className="form-check-label" htmlFor="clinic">Clinic</label>
+                                        <label className="form-check-label" htmlFor="clinic">Clínica</label>
                                     </div>
-                                    <select className="form-control mt-2 mb-2" id="medicalCenter">
-                                        <option value="default" >Available Medical Centers</option>
-                                        <option value="HMS" onClick={(event) => (this.handleMedicalCenterDropdown(event, 'HMS'))}>HMS</option>
-                                        <option value="San Felipe" onClick={(event) => (this.handleMedicalCenterDropdown(event, 'San Felipe'))}>San Felipe</option>
-                                        <option value="Medical Center" onClick={(event) => (this.handleMedicalCenterDropdown(event, 'Medical Center'))}>Medical Center</option>
+                                    <select className="form-control mt-2 mb-2 select-signup" id="medicalCenter">
+                                        <option className = "option-signup" value="default" >Centros médicos disponibles</option>
+                                        <option className = "option-signup" value="HMS" onClick={(event) => (this.handleMedicalCenterDropdown(event, 'HMS'))}>HMS</option>
+                                        <option className = "option-signup" value="San Felipe" onClick={(event) => (this.handleMedicalCenterDropdown(event, 'San Felipe'))}>San Felipe</option>
+                                        <option className = "option-signup" value="Medical Center" onClick={(event) => (this.handleMedicalCenterDropdown(event, 'Medical Center'))}>Medical Center</option>
                                     </select>
                                 </div>
                                 <div className="form-group">
-                                    <label>Email address</label>
+                                
                                     <input
                                         type="email"
-                                        className="form-control bmd-label-floating"
+                                        className="form-control bmd-label-floating input-login"
                                         id="email"
                                         aria-describedby="emailHelp"
-                                        placeholder="Enter email"
+                                        placeholder="Correo electrónico"
                                         onChange={(event) => this.setState({ email: event.target.value })}
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <label>Password</label>
+                                    
                                     <input
                                         type="password"
-                                        className="form-control"
+                                        className="form-control input-login"
                                         id="password"
-                                        placeholder="Password"
+                                        placeholder="Contraseña"
                                         onChange={(event) => this.setState({ password: event.target.value })}
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <label>Confirm Password</label>
+                                    
                                     <input
                                         type="password"
-                                        className="form-control"
+                                        className="form-control input-login"
                                         id="confirmPassword"
-                                        placeholder="Confirm password"
+                                        placeholder="Confirmar contraseña"
                                         onChange={(event) => this.setState({ confirmPassword: event.target.value })}
                                     />
                                 </div>
                                 
-                                <button type="submit" className="btn btn-outline-primary submit-button btn-outline-secondary">Submit</button>
+                                <button type="submit" className="btn btn-outline-primary submit-button btn-outline-secondary">Registrarse</button>
+                                <Link id="linkSignup" className="text-center" to="/">Iniciar sesión</Link>
                                 
                             </form>
                         </div>
