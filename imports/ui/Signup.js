@@ -4,6 +4,8 @@ import { Meteor } from 'meteor/meteor';
 import { Link } from 'react-router-dom';
 import { history } from '../routes/routes';
 
+import Preloader from './Preloader'
+
 export class Signup extends React.Component {
     state = {
         email: '',
@@ -40,10 +42,7 @@ export class Signup extends React.Component {
             });
         }
     }
-    componentDidMount(){
-            $('.status').fadeOut();
-            $('.preloader').fadeOut();
-    }
+    
     handleMedicalCenterDropdown = (event, medicalCenter) => {
         event.preventDefault();
         this.setState({ medicalCenter });
@@ -51,7 +50,7 @@ export class Signup extends React.Component {
     render() {
         return (
             <div className="signup-container">
-            <div className ="preloader"><div className="status"></div></div>
+                <Preloader/>
                 <div className="container absolute-center signup-content-container">
                     <div className="row justify-content-md-center signup-form-container">
                         <div className="col-sm-12 col-md-6 col-lg-6 align-self-center signup-form-container">

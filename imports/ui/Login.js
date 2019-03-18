@@ -4,6 +4,8 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { Link } from 'react-router-dom';
 import { history } from '../routes/routes';
 
+import Preloader from './Preloader'
+
 export class Login extends React.Component {
     state = {
         email: '',
@@ -11,10 +13,6 @@ export class Login extends React.Component {
         loading: false,
         password: '',
         loaded:false
-    }
-    componentDidMount(){
-        $('.status').fadeOut();
-        $('.preloader').fadeOut();
     }
 
     onSubmit = (event) => {
@@ -37,7 +35,7 @@ export class Login extends React.Component {
     render() {
         return (
             <div className="signup-container">
-                <div className ="preloader"><div className="status"></div></div>
+                <Preloader/>
                 <div className="container absolute-center signup-content-container">
                     <div className="row justify-content-md-center">
                         <div className="col-sm-12 col-md-6 col-lg-6 align-self-center">
