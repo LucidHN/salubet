@@ -69,8 +69,8 @@ export class Login extends React.Component {
                                         />
                                 </div>
                                 <button type="submit" className="btn btn-outline-primary submit-button">Continuar</button>
-                                <Link id="linkSignup" className="text-center" to="/signup">Registrarse</Link>
-                                <NavLink to="/forgotPassword">Olvidé mi contraseña</NavLink>
+                                <Link id="linkSignup" className="text-center links-login" to="/signup">Registrarse</Link>
+                                <Link className="text-center links-login" to="/forgotPassword">Olvidé mi contraseña</Link>
                             </form>
                         </div>
                     </div>

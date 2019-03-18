@@ -20,12 +20,12 @@ export class ForgotPassword extends React.Component {
     render() {
         return (
             <div>
-                { this.state.response ? <p>response</p> : <p>no response</p>}
+                { this.state.response ? <p>Respuesta</p> : <p>Sin respuesta</p>}
                 <form onSubmit={this.onSubmit}>
                     <input
                         onChange={(event) => this.setState({ email: event.target.value })}
                     />
-                    <button>Send Email</button>
+                    <button>Enviar correo</button>
                 </form>
             </div>
         );
