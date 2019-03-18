@@ -133,7 +133,7 @@ export class Signup extends React.Component {
                                 </div>
                                 
                                 <button type="submit" className="btn btn-outline-primary submit-button btn-outline-secondary">Registrarse</button>
-                                <Link id="linkSignup" className="text-center" to="/">Iniciar sesión</Link>
+                                <Link id="linkSignup" className="text-center links-login" to="/">Iniciar sesión</Link>
                                 
                             </form>
                         </div>
