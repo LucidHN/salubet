@@ -1,8 +1,8 @@
 import React from 'react';
+import { Accounts } from 'meteor/accounts-base';
 
 import MainSidebar from './MainSidebar';
 import PatientSidebar from './PatientSidebar';
-
 
 export default class Dashboard extends React.Component {
     state = {
@@ -61,10 +61,13 @@ export default class Dashboard extends React.Component {
                             </button>
                             <ul className="navbar-nav">
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#" onClick={this.changeToPatientSidebar}>Pacientes</a>
+                                    <a className="nav-link" onClick={this.changeToPatientSidebar}>Pacientes</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#" onClick={this.changeToMainSidebar}>Expedientes</a>
+                                    <a className="nav-link" onClick={this.changeToMainSidebar}>Expedientes</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a className="nav-link" onClick={() => Accounts.logout()}>Logout</a>
                                 </li>
                             </ul>
                         </div>
@@ -72,8 +75,6 @@ export default class Dashboard extends React.Component {
                     <div className = "container ">
                         {this.props.children}
                     </div>
-                        
-                    
                 </div>
             </div>
         );

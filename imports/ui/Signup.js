@@ -15,8 +15,7 @@ export class Signup extends React.Component {
         name: '',
         medicalCenterType: '',
         medicalCenter: '',
-        error: '',
-        loading: false
+        error: ''
     }
     onSubmit = async (event) => {
         event.preventDefault();
@@ -34,11 +33,9 @@ export class Signup extends React.Component {
                 console.log(error);
                 if (error) {
                     this.setState({
-                        loading: false,
                         error: error.message
                     });
                 } else {
-                    this.setState({ loading: false });
                     history.push('/');
                 }
             });
@@ -48,6 +45,7 @@ export class Signup extends React.Component {
     }
     handleMedicalCenterDropdown = (event) => {
         event.preventDefault();
+        let medicalCenter = event.target.value;
         this.setState({ medicalCenter });
     }
     render() {

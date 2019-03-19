@@ -12,6 +12,7 @@ import NotFound from '../ui/NotFound';
 import Signup from '../ui/Signup'
 import PatientList from '../ui/PatientList';
 import PatientSearch from '../ui/PatientSearch';
+import ResetPassword from '../ui/ResetPassword';
 
 export const history = createBrowserHistory();
 
@@ -20,6 +21,7 @@ export const routes = (
         <Switch >
             <Route exact path="/" component={Login} />
             <Route exact path="/signup" component={Signup} />
+            <Route exact path="/reset-password/:token" component={ResetPassword} />
             <Route exact path="/forgotPassword" component={ForgotPassword} />
             <LayoutRoute exact path="/home"  layout={Dashboard} component={Home}/>
             <LayoutRoute exact path="/registerPatients" layout={Dashboard} component={RegisterPatients}/>
