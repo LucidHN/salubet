@@ -6,6 +6,8 @@
 }
 
 
+
+
 .preloader{
   background-color: white;
   position: fixed;
@@ -100,7 +102,7 @@ body {
 }
 
 .signup-container {
-  height: 100vh;
+  height: 800px;
   background-image: url("/theme_images/Background.png");
   background-size: cover;
   background-repeat: no-repeat;
@@ -261,17 +263,23 @@ nav.nav-white-background{
     margin-left: 180px;
   }
   #sidebar.active {
-    margin-left: -180px;
-}
-  /*
-  
-
-  #content{
-    margin-left: 0px;
+    margin-left: -180px;    
   }
-  #content.active{
-    margin-left: 250px;
-  } */
+  .signup-container{
+    object-fit: none;
+    /* background-image: none;
+    background-color: #3bab83; */
+    height: 700px;
+  }
+}
+
+@media (max-height: 650px){
+  .signup-container{
+    object-fit: none;
+    /* background-image: none;
+    background-color: #3bab83; */
+    height: 700px;
+  }
 }
 
 #search {
