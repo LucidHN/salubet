@@ -48,7 +48,7 @@ export class Signup extends React.Component {
     }
     handleMedicalCenterDropdown = (event) => {
         event.preventDefault();
-        this.setState({ medicalCenter });
+        this.setState({ medicalCenter: event.target.value });
     }
     render() {
         return (
