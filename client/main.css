@@ -5,6 +5,9 @@
     padding: 0;
 }
 
+
+
+
 .preloader{
   background-color: white;
   position: fixed;
@@ -17,7 +20,7 @@
 }
 
 .status{
-  background-image: url('https://a.uguu.se/xZQcqJ7wD8wC_DualRing-1s-200px.gif');
+  background-image: url('/theme_images/loader200px.gif');
   background-repeat: no-repeat;
   width: 200px;
   height: 200px;
@@ -92,13 +95,14 @@ body {
   font-family: sans-serif;
 }
 
+
 .absolute-center {
   margin-top: 0vh;
   height: 100%;
 }
 
 .signup-container {
-  height: 100vh;
+  height: 800px;
   background-image: url("/theme_images/Background.png");
   background-size: cover;
   background-repeat: no-repeat;
@@ -139,7 +143,7 @@ body {
 
 .salubet-logo {
 
-  margin-top: 40px;
+  
   margin-bottom: 20px;
   height: auto;
   max-width: 120px;
@@ -251,17 +255,30 @@ nav.nav-white-background{
 
 @media (max-width: 768px) {
   #sidebar {
-      margin-left: -250px;
-  }
-  #sidebar.active {
-      margin-left: 0px;
+    min-width: 180px;
+    max-width: 180px;
   }
 
   #content{
-    margin-left: 0px;
+    margin-left: 180px;
   }
-  #content.active{
-    margin-left: 250px;
+  #sidebar.active {
+    margin-left: -180px;    
+  }
+  .signup-container{
+    object-fit: none;
+    /* background-image: none;
+    background-color: #3bab83; */
+    height: 700px;
+  }
+}
+
+@media (max-height: 650px){
+  .signup-container{
+    object-fit: none;
+    /* background-image: none;
+    background-color: #3bab83; */
+    height: 700px;
   }
 }
 

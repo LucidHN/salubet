@@ -4,6 +4,9 @@ import { Meteor } from 'meteor/meteor';
 import { Link } from 'react-router-dom';
 import { history } from '../routes/routes';
 
+import Preloader from './Preloader';
+import ErrorAlert from './ErrorAlert';
+
 export class Signup extends React.Component {
     state = {
         email: '',
@@ -12,8 +15,7 @@ export class Signup extends React.Component {
         name: '',
         medicalCenterType: '',
         medicalCenter: '',
-        errorMessage: false,
-        loading: false
+        error: ''
     }
     onSubmit = async (event) => {
         event.preventDefault();
@@ -28,39 +30,38 @@ export class Signup extends React.Component {
                 }
             };
             await this.props.call('user.createUser', user, (error) => {
+                console.log(error);
                 if (error) {
                     this.setState({
-                        loading: false,
-                        errorMessage: error.message
+                        error: error.message
                     });
                 } else {
-                    this.setState({ loading: false });
                     history.push('/');
                 }
             });
+        } else {
+            this.setState({ error: 'Passwords don\'t match.' })
         }
     }
-    componentDidMount(){
-            $('.status').fadeOut();
-            $('.preloader').fadeOut();
-    }
-    handleMedicalCenterDropdown = (event, medicalCenter) => {
+    handleMedicalCenterDropdown = (event) => {
         event.preventDefault();
-        this.setState({ medicalCenter });
+        this.setState({ medicalCenter: event.target.value });
     }
     render() {
         return (
             <div className="signup-container">
-            <div className ="preloader"><div className="status"></div></div>
+                <Preloader />
+
                 <div className="container absolute-center signup-content-container">
                     <div className="row justify-content-md-center signup-form-container">
                         <div className="col-sm-12 col-md-6 col-lg-6 align-self-center signup-form-container">
+                            {this.state.error ? <ErrorAlert message={this.state.error} /> : null}
                             <form onSubmit={this.onSubmit}>
-                                
+
                                 <img src="/theme_images/logo_blanco1.png" className="salubet-logo"></img>
-                                
+
                                 <div className="form-group">
-                                    
+
                                     <input
                                         type="text"
                                         className="form-control bmd-label-floating input-login"
@@ -70,7 +71,7 @@ export class Signup extends React.Component {
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <label>Centro médico</label><br/>
+                                    <label>Centro médico</label><br />
                                     <div className="form-check mb-1 form-check-inline">
                                         <input
                                             className="form-check-input"
@@ -93,15 +94,15 @@ export class Signup extends React.Component {
                                         />
                                         <label className="form-check-label" htmlFor="clinic">Clínica</label>
                                     </div>
-                                    <select className="form-control mt-2 mb-2 select-signup" id="medicalCenter">
-                                        <option className = "option-signup" value="default" >Centros médicos disponibles</option>
-                                        <option className = "option-signup" value="HMS" onClick={(event) => (this.handleMedicalCenterDropdown(event, 'HMS'))}>HMS</option>
-                                        <option className = "option-signup" value="San Felipe" onClick={(event) => (this.handleMedicalCenterDropdown(event, 'San Felipe'))}>San Felipe</option>
-                                        <option className = "option-signup" value="Medical Center" onClick={(event) => (this.handleMedicalCenterDropdown(event, 'Medical Center'))}>Medical Center</option>
+                                    <select className="form-control mt-2 mb-2 select-signup" id="medicalCenter" onChange={this.handleMedicalCenterDropdown}>
+                                        <option className="option-signup" value="default">Centros médicos disponibles</option>
+                                        <option className="option-signup" value="HMS">HMS</option>
+                                        <option className="option-signup" value="San Felipe">San Felipe</option>
+                                        <option className="option-signup" value="Medical Center">Medical Center</option>
                                     </select>
                                 </div>
                                 <div className="form-group">
-                                
+
                                     <input
                                         type="email"
                                         className="form-control bmd-label-floating input-login"
@@ -112,7 +113,7 @@ export class Signup extends React.Component {
                                     />
                                 </div>
                                 <div className="form-group">
-                                    
+
                                     <input
                                         type="password"
                                         className="form-control input-login"
@@ -122,7 +123,7 @@ export class Signup extends React.Component {
                                     />
                                 </div>
                                 <div className="form-group">
-                                    
+
                                     <input
                                         type="password"
                                         className="form-control input-login"
@@ -131,10 +132,10 @@ export class Signup extends React.Component {
                                         onChange={(event) => this.setState({ confirmPassword: event.target.value })}
                                     />
                                 </div>
-                                
+
                                 <button type="submit" className="btn btn-outline-primary submit-button btn-outline-secondary">Registrarse</button>
                                 <Link id="linkSignup" className="text-center links-login" to="/">Iniciar sesión</Link>
-                                
+
                             </form>
                         </div>
                     </div>

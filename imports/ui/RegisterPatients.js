@@ -2,6 +2,8 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 
+import ErrorAlert from './ErrorAlert';
+
 export class RegisterPatients extends React.Component {
     state = {
         name: '',
@@ -25,7 +27,7 @@ export class RegisterPatients extends React.Component {
     render() {
         return (
             <div className="register-patients-container">
-                {this.state.error ? <p>{this.state.error}</p> : null}
+                {this.state.error ? <ErrorAlert message={this.state.error} /> : null}
                 <form onSubmit={this.onSubmit} >
                     <div className="row">
                         <div className="col-sm-12 col-md-7 col-lg-7">
