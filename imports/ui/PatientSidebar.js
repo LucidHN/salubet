@@ -22,12 +22,9 @@ export class PatientSidebar extends React.Component {
                         <li className="bar">
                             <NavLink className="bar" to="/searchPatients">Buscar paciente</NavLink>
                         </li>
-                        <li className="bar">
+                        {/* <li className="bar">
                             <NavLink className="bar" to="/registerPatients">Crear paciente</NavLink>
-                        </li>
-                        <li className="bar">
-                            <NavLink className="bar" to="/patientList">Lista de pacientes</NavLink>
-                        </li>
+                        </li> */}
                         
                     </ul>
                 </nav>

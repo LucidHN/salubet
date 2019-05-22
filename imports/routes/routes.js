@@ -10,7 +10,6 @@ import Login from '../ui/Login';
 import LayoutRoute from './LayoutRoute';
 import NotFound from '../ui/NotFound';
 import Signup from '../ui/Signup'
-import PatientList from '../ui/PatientList';
 import PatientSearch from '../ui/PatientSearch';
 import ResetPassword from '../ui/ResetPassword';
 
@@ -25,7 +24,6 @@ export const routes = (
             <Route exact path="/forgotPassword" component={ForgotPassword} />
             <LayoutRoute exact path="/home"  layout={Dashboard} component={Home}/>
             <LayoutRoute exact path="/registerPatients" layout={Dashboard} component={RegisterPatients}/>
-            <LayoutRoute exact path="/patientList" layout={Dashboard} component={PatientList}/>
             <LayoutRoute exact path="/searchPatients" layout={Dashboard} component={PatientSearch}/>
             <Route path="/*" component={NotFound} />
         </Switch>
