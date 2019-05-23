@@ -102,7 +102,7 @@ body {
 }
 
 .signup-container {
-  height: 800px;
+  height: 100vh;
   background-image: url("/theme_images/Background.png");
   background-size: cover;
   background-repeat: no-repeat;
@@ -279,6 +279,13 @@ nav.nav-white-background{
     /* background-image: none;
     background-color: #3bab83; */
     height: 700px;
+  }
+}
+
+@media (max-height: 800px){
+  .signup-container {
+    height: 800px;
+    
   }
 }
 
