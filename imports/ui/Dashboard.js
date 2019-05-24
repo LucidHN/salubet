@@ -52,7 +52,7 @@ export default class Dashboard extends React.Component {
     render() {
         return (
             <div >
-                <nav className="navbar navbar-expand-sm navbar-dark bg-dark ">
+                <nav className="navbar navbar-expand-sm navbar-main-color navbar-dark ">
                     <div className="container">
                         <a className="navbar-brand" href="#">Salubet</a>
 
@@ -118,8 +118,10 @@ export default class Dashboard extends React.Component {
                 </nav> */}
                 {this.renderSidebar()}
                 <div id="content">
+                    <div className = "container mt-5">
+                        {this.props.children}
+                    </div>
                     
-                    {this.props.children}
                 </div>
             </div>
         );

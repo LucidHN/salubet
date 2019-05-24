@@ -6,6 +6,11 @@
 }
 
 
+.navbar-main-color{
+  background-color:#3bab83;
+}
+
+
 
 
 .preloader{
@@ -205,8 +210,8 @@ ul.bar:hover, li.bar:hover,a.bar, a.bar:hover, a.bar:focus {
   max-width: 250px;
   height: 100vh;
   position: fixed;
-  background: #7386D5;
-  color: #fff;
+  background: rgb(245, 245, 245);
+  color: #000;
   transition: all 0.3s;
 }
 
@@ -216,16 +221,16 @@ ul.bar:hover, li.bar:hover,a.bar, a.bar:hover, a.bar:focus {
 
 #sidebar .sidebar-header {
   padding: 20px;
-  background: #6d7fcc;
+  background: #cecece;
 }
 
 #sidebar ul.components {
   padding: 20px 0;
-  border-bottom: 1px solid #47748b;
+  /* border-bottom: 1px solid #47748b; */
 }
 
 #sidebar ul.bar p.bar {
-  color: #fff;
+  color: #000;
   padding: 10px;
 }
 
@@ -235,18 +240,18 @@ ul.bar:hover, li.bar:hover,a.bar, a.bar:hover, a.bar:focus {
   display: block;
 }
 #sidebar ul.bar li.bar a.bar:hover {
-  color: #7386D5;
-  background: #fff;
+  color: #000;
+  background: rgb(156, 156, 156);
 }
 
 #sidebar ul.bar li.active > a.bar, a.bar[aria-expanded="true"] {
-  color: #fff;
-  background: #6d7fcc;
+  color: #000;
+  background: #cecece;
 }
 ul.bar ul.bar a.bar {
   font-size: 0.9em !important;
   padding-left: 30px !important;
-  background: #6d7fcc;
+  background: #cecece;
 }
 
 nav.nav-white-background{

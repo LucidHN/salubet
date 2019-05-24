@@ -13,7 +13,7 @@ export class MainSidebar extends React.Component {
     render() {
         return (
                 <nav id="sidebar">
-                    <div className="sidebar-header">
+                    <div className="sidebar-header sidebar-main-color">
                         <h3>Dr. { this.props.user ? this.props.user.profile.name : null }</h3>
                     </div>
                     <ul className="list-unstyled components bar">
