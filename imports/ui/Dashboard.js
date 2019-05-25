@@ -55,7 +55,9 @@ export default class Dashboard extends React.Component {
             <div >
                 <nav className="navbar navbar-expand-lg navbar-main-color navbar-dark ">
                     
-                        <a className="navbar-brand " href="#">Salubet</a>
+                        <a className="navbar-brand " href="#">
+                            <img src='/theme_images/logo_blanco1.png' width ='60' height = '55' className = 'd-inline-block align-top' alt='Salubet Logo'></img>
+                        </a>
 
                         <button className="navbar-toggler" data-toggle="collapse" data-target="#navbarNav3">
                             <span className="navbar-toggler-icon"></span>
