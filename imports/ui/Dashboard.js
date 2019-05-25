@@ -86,7 +86,7 @@ export default class Dashboard extends React.Component {
                                             <span>Salir</span>
                                         </button>
                                         <button className="dropdown-item" onClick={this.handleToggle} type="button" id="sidebarCollapse" >
-                                            <span>Toggle Sidebar</span>
+                                            <span>Barra lateral</span>
                                         </button>
                                         
                                     </div>

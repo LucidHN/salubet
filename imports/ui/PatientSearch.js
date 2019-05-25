@@ -25,44 +25,49 @@ export class PatientSearch extends React.Component {
     }
     renderRows = () => (
         this.state.filteredPatients.map((patient) => (
-            <tr key={patient._id}>
+            <tr key={patient._id} >
                 <th scope="row">{ patient.name }</th>
                 <td>{ patient.id }</td>
-                <td><button className="btn btn-success btn-round">VER EXPEDIENTE</button></td>
+                <td><button className="btn btn-success btn-round">Iniciar cita</button></td>
             </tr>
         ))
     )
     render() {
         return (
-            <div className="row">
-                <div className="col-lg-12 col-md-12 col-sm-12">
-                <form id="search" onSubmit={this.onSubmit}>
-                    <div className="row">
-                        <div className="col-lg-7 col-md-7 col-sm-7">
-                        <input 
-                            type="text" 
-                            id="search-input" 
-                            placeholder="Buscar Cliente..." 
-                            onChange={(event) => this.setState({ searchQuery: event.target.value })}
-                        />
-                        </div>
-                        <div className="col-lg-1 col-md-1 col-sm-1">
-                            <button type="submit" id="search-btn" className="btn">Buscar</button>
-                        </div>
+            <div className="container">
+                <h2 className = "title-patients">Pacientes</h2>
+                <div className="row">
+                    <div className="col-lg-12 col-md-12 col-sm-12">
+                        <form id="search" onSubmit={this.onSubmit} className="pb-5">
+                            <div className="row">
+                                <div className="col-lg-5 col-md-5 col-sm-7">
+                                <input 
+                                    className ="form-control"
+                                    type="text" 
+                                    id="search-input" 
+                                    placeholder="Nombre o ID" 
+                                    onChange={(event) => this.setState({ searchQuery: event.target.value })}
+                                />
+                                </div>
+                                <div className="col-lg-1 col-md-1 col-sm-6 search-btn">
+                                    {/* <button type="submit" id="search-btn " className="btn-round">Buscar</button> */}
+                                    <button type="submit" id = "search-btn"className="btn btn-success btn-round">Buscar</button>
+                                </div>
+                            </div>
+                        </form>
+                        <table className="table table-borderless table-hover table-responsive">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Paciente </th>
+                                    <th scope="col"># Identificacíon</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {this.renderRows()}
+                            </tbody>
+                        </table>
                     </div>
-                    </form>
-                    <table className="table table-hover table-responsive">
-                        <thead>
-                            <tr>
-                                <th scope="col">Nombre </th>
-                                <th scope="col">Num. Identificacíon</th>
-                                <th scope="col"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {this.renderRows()}
-                        </tbody>
-                    </table>
                 </div>
             </div>
         );
