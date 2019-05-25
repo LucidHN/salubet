@@ -51,7 +51,7 @@ export class PatientSearch extends React.Component {
                         </div>
                     </div>
                     </form>
-                    <table className="table table-hover">
+                    <table className="table table-hover table-responsive">
                         <thead>
                             <tr>
                                 <th scope="col">Nombre </th>
