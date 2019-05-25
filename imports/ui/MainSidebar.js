@@ -17,7 +17,7 @@ export class MainSidebar extends React.Component {
                         <h3>Dr. { this.props.user ? this.props.user.profile.name : null }</h3>
                     </div>
                     <ul className="list-unstyled components bar">
-                        <p className="bar">San Felipe</p>
+                        <p className="bar hospital-subheader">San Felipe</p>
                         <li className="bar">
                             <a className="bar" href="#">Información General</a>
                         </li>
