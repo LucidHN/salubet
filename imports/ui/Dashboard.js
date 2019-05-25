@@ -31,6 +31,7 @@ export default class Dashboard extends React.Component {
                 patientSidebar:true,
                 mainSidebar:false
             });
+            
         }
     }
     changeToMainSidebar = () => {
@@ -52,16 +53,16 @@ export default class Dashboard extends React.Component {
     render() {
         return (
             <div >
-                <nav className="navbar navbar-expand-sm navbar-main-color navbar-dark ">
-                    <div className="container">
-                        <a className="navbar-brand" href="#">Salubet</a>
+                <nav className="navbar navbar-expand-lg navbar-main-color navbar-dark ">
+                    
+                        <a className="navbar-brand " href="#">Salubet</a>
 
                         <button className="navbar-toggler" data-toggle="collapse" data-target="#navbarNav3">
                             <span className="navbar-toggler-icon"></span>
                         </button>
                         <div className="collapse navbar-collapse" id="navbarNav3">
-                            <ul className="navbar-nav">
-                                <li className="nav-item">
+                            <ul className="navbar-nav ml-auto">
+                                <li className="nav-item ">
                                     <a className="nav-link" >Inicio</a>
                                 </li>
                                 <li className="nav-item">
@@ -77,9 +78,11 @@ export default class Dashboard extends React.Component {
                                     <a className="nav-link" >Contabilidad</a>
                                 </li>
                                 <li className="nav-item dropdown">
-                                    <a className="nav-link  " data-toggle="dropdown">Opciones</a>
-                                    <div className="dropdown-menu ">
-                                        <a className="dropdown-item " onClick={() => Accounts.logout()}>Salir</a>
+                                    <a className="nav-link  " data-toggle="dropdown">[Opciones]</a>
+                                    <div className="dropdown-menu dropdown-menu-right ">
+                                        <button className="dropdown-item" onClick={() => Accounts.logout()} type="button" >
+                                            <span>Salir</span>
+                                        </button>
                                         <button className="dropdown-item" onClick={this.handleToggle} type="button" id="sidebarCollapse" >
                                             <span>Toggle Sidebar</span>
                                         </button>
@@ -89,7 +92,7 @@ export default class Dashboard extends React.Component {
                                 
                             </ul>
                         </div>
-                    </div>
+                    
                 </nav>
 
 
@@ -118,7 +121,7 @@ export default class Dashboard extends React.Component {
                 </nav> */}
                 {this.renderSidebar()}
                 <div id="content">
-                    <div className = "container mt-5">
+                    <div className = " mt-3 ml-3">
                         {this.props.children}
                     </div>
                     
