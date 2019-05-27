@@ -31,6 +31,7 @@ export default class Dashboard extends React.Component {
                 patientSidebar:true,
                 mainSidebar:false
             });
+            
         }
     }
     changeToMainSidebar = () => {
@@ -51,30 +52,81 @@ export default class Dashboard extends React.Component {
     }
     render() {
         return (
-            <div className="wrapper">
-                {this.renderSidebar()}
-                <div id="content">
-                    <nav className="navbar navbar-expand-lg navbar-light  nav-white-background">
-                        <div className="container-fluid">
-                            <button onClick={this.handleToggle} type="button" id="sidebarCollapse" className="btn btn-info">
-                                <span>Toggle Sidebar</span>
-                            </button>
-                            <ul className="navbar-nav">
+            <div >
+                <nav className="navbar navbar-expand-lg navbar-main-color navbar-dark ">
+                    
+                        <a className="navbar-brand " href="#">
+                            <img src='/theme_images/logo_blanco1.png' width ='60' height = '55' className = 'd-inline-block align-top' alt='Salubet Logo'></img>
+                        </a>
+
+                        <button className="navbar-toggler" data-toggle="collapse" data-target="#navbarNav3">
+                            <span className="navbar-toggler-icon"></span>
+                        </button>
+                        <div className="collapse navbar-collapse" id="navbarNav3">
+                            <ul className="navbar-nav ml-auto">
+                                <li className="nav-item ">
+                                    <a className="nav-link" >Inicio</a>
+                                </li>
                                 <li className="nav-item">
                                     <a className="nav-link" onClick={this.changeToPatientSidebar}>Pacientes</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a className="nav-link" >Agenda</a>
                                 </li>
                                 <li className="nav-item">
                                     <a className="nav-link" onClick={this.changeToMainSidebar}>Expedientes</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" onClick={() => Accounts.logout()}>Logout</a>
+                                    <a className="nav-link" >Contabilidad</a>
                                 </li>
+                                <li className="nav-item dropdown">
+                                    <a className="nav-link  " data-toggle="dropdown">[Opciones]</a>
+                                    <div className="dropdown-menu dropdown-menu-right ">
+                                        <button className="dropdown-item" onClick={() => Accounts.logout()} type="button" >
+                                            <span>Salir</span>
+                                        </button>
+                                        <button className="dropdown-item" onClick={this.handleToggle} type="button" id="sidebarCollapse" >
+                                            <span>Barra lateral</span>
+                                        </button>
+                                        
+                                    </div>
+                                </li>
+                                
                             </ul>
                         </div>
-                    </nav>
-                    <div className = "container ">
+                    
+                </nav>
+
+
+
+
+
+
+                
+                {/* <nav className="navbar navbar-expand-lg navbar-light  nav-white-background">
+                    <div className="container-fluid">
+                        <button onClick={this.handleToggle} type="button" id="sidebarCollapse" className="btn btn-info">
+                            <span>Toggle Sidebar</span>
+                        </button>
+                        <ul className="navbar-nav">
+                            <li className="nav-item">
+                                <a className="nav-link" onClick={this.changeToPatientSidebar}>Pacientes</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" onClick={this.changeToMainSidebar}>Expedientes</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" onClick={() => Accounts.logout()}>Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav> */}
+                {this.renderSidebar()}
+                <div id="content">
+                    <div className = " mt-3 ml-3">
                         {this.props.children}
                     </div>
+                    
                 </div>
             </div>
         );

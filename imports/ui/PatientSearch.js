@@ -49,27 +49,31 @@ export class PatientSearch extends React.Component {
 
     render() {
         return (
+
+            <div className="container">
+            <h2 className = "title-patients">Pacientes</h2>
             <div className="row">
                 <div className="col-lg-12 col-md-12 col-sm-12">
-                <form id="search" onSubmit={this.onSubmit}>
+                  <form id="search" onSubmit={this.onSubmit} className="pb-5">
                     <div className="row">
-                        <div className="col-lg-7 col-md-7 col-sm-7">
+                        <div className="col-lg-5 col-md-5 col-sm-7">
                         <input 
+                            className ="form-control"
                             type="text" 
                             id="search-input" 
                             placeholder="Buscar Cliente..." 
                             onChange={(event) => this.setState({ searchQuery: event.target.value })}
                         />
                         </div>
-                        <div className="col-lg-1 col-md-1 col-sm-1">
-                            <button type="submit" id="search-btn" className="btn">Buscar</button>
+                        <div className="col-lg-1 col-md-1 col-sm-6 search-btn">
+                            <button type="submit" id="search-btn" className="btn btn-success btn-round">Buscar</button>
                         </div>
                         <div className="col-lg-2 col-md-2 col-sm-2">
                             <NavLink className="btn btn-success btn-round" to="/registerPatients">Crear paciente</NavLink>
                         </div>
                     </div>
                     </form>
-                    <table className="table table-hover">
+                    <table className="table table-borderless table-hover table-responsive">
                         <thead>
                             <tr>
                                 <th scope="col">Paciente </th>
@@ -81,6 +85,8 @@ export class PatientSearch extends React.Component {
                             {this.renderRows()}
                         </tbody>
                     </table>
+                  </div>
+
                 </div>
             </div>
         );

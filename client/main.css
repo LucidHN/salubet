@@ -1,12 +1,112 @@
+/*
+  COLORES PRINCIPALES
+  verde salubet: 3BAB83
+  sidebar items: rgb(245, 245, 245)
+  sidebar header y sidebar active: e9e9e9
+
+
+*/
+
 *,
 *::after,
 *::before {
     margin: 0;
     padding: 0;
+    /* border: 1px solid black; */
+}
+
+
+/*Override of bootstrap classes*/
+
+.navbar {
+  min-height: 80px;
+}
+
+.navbar-brand {  
+  padding: 0 15px;
+  line-height: 80px;
+}
+
+.navbar-toggle {
+  margin-top: 23px;
+  padding: 9px 10px !important;
+}
+
+nav .navbar-nav > li a{
+  color: rgb(236, 236, 236) !important;
+}
+
+.navbar-brand:hover, .nav-link:hover {
+  color: white !important; 
+  font-weight: bold;
+}
+
+.table {
+  border: none!important;
+}
+
+
+/*Responsiveness Queries*/
+
+@media (max-width: 768px) {
+  #sidebar {
+    min-width: 180px;
+    max-width: 180px;
+  }
+
+  #content{
+    margin-left: 180px;
+  }
+  #sidebar.active {
+    margin-left: -180px;    
+  }
+  .signup-container{
+    object-fit: none;
+    /* background-image: none;
+    background-color: #3bab83; */
+    height: 700px;
+  }
+
+  .search-btn{
+    margin-top: 20px;
+  }
+}
+
+@media (max-height: 650px){
+  .signup-container{
+    object-fit: none;
+    /* background-image: none;
+    background-color: #3bab83; */
+    height: 700px;
+  }
+  
+}
+
+@media (max-height: 800px){
+  .signup-container {
+    height: 800px;
+    
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar-nav > li > a {    
+    padding-top: 26.5px;
+    padding-bottom: 26.5px;
+    line-height: 27px;
+  }
+  
 }
 
 
 
+
+
+
+/*Main classes*/
+.navbar-main-color{
+  background-color:#3bab83;
+}
 
 .preloader{
   background-color: white;
@@ -87,6 +187,7 @@
 
 .btn-round{
   border-radius: 10rem !important;
+  background-color: #3BAB83 !important;
 }
 
 html, body {margin: 0; height: 100%;}
@@ -102,7 +203,7 @@ body {
 }
 
 .signup-container {
-  height: 800px;
+  height: 100vh;
   background-image: url("/theme_images/Background.png");
   background-size: cover;
   background-repeat: no-repeat;
@@ -205,8 +306,8 @@ ul.bar:hover, li.bar:hover,a.bar, a.bar:hover, a.bar:focus {
   max-width: 250px;
   height: 100vh;
   position: fixed;
-  background: #7386D5;
-  color: #fff;
+  background: rgb(245, 245, 245);
+  color: #000;
   transition: all 0.3s;
 }
 
@@ -214,18 +315,18 @@ ul.bar:hover, li.bar:hover,a.bar, a.bar:hover, a.bar:focus {
   margin-left: -250px;
 }
 
-#sidebar .sidebar-header {
-  padding: 20px;
-  background: #6d7fcc;
+ .sidebar-header {
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 5px;
+  background: #e9e9e9;
 }
 
-#sidebar ul.components {
-  padding: 20px 0;
-  border-bottom: 1px solid #47748b;
-}
+
 
 #sidebar ul.bar p.bar {
-  color: #fff;
+  color: #000;
   padding: 10px;
 }
 
@@ -235,52 +336,32 @@ ul.bar:hover, li.bar:hover,a.bar, a.bar:hover, a.bar:focus {
   display: block;
 }
 #sidebar ul.bar li.bar a.bar:hover {
-  color: #7386D5;
-  background: #fff;
+  color: #000;
+  background: rgb(201, 201, 201);
 }
 
 #sidebar ul.bar li.active > a.bar, a.bar[aria-expanded="true"] {
-  color: #fff;
-  background: #6d7fcc;
+  color: #000;
+  background: #e9e9e9;
 }
 ul.bar ul.bar a.bar {
   font-size: 0.9em !important;
   padding-left: 30px !important;
-  background: #6d7fcc;
+  background: #e9e9e9;
 }
 
 nav.nav-white-background{
   background: #fff;
 }
 
-@media (max-width: 768px) {
-  #sidebar {
-    min-width: 180px;
-    max-width: 180px;
-  }
-
-  #content{
-    margin-left: 180px;
-  }
-  #sidebar.active {
-    margin-left: -180px;    
-  }
-  .signup-container{
-    object-fit: none;
-    /* background-image: none;
-    background-color: #3bab83; */
-    height: 700px;
-  }
+.hospital-subheader{
+  background-color: #e9e9e9;
+  margin: 0!important ;
+  padding-left: 20px !important;
+  padding-bottom: 25px !important;
 }
 
-@media (max-height: 650px){
-  .signup-container{
-    object-fit: none;
-    /* background-image: none;
-    background-color: #3bab83; */
-    height: 700px;
-  }
-}
+
 
 #search {
   margin-bottom: 10px;
@@ -294,4 +375,14 @@ nav.nav-white-background{
 #search-btn {
   background-color: #3BAB83;
   height: 100%;
+}
+
+
+
+/*Para la lista de pacientes*/
+
+.title-patients{
+  color: #3BAB83;
+  padding: 50px 0px;
+  
 }
