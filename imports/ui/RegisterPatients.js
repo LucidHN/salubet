@@ -1,16 +1,19 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
+import { NavLink } from 'react-router-dom';
 
 import ErrorAlert from './ErrorAlert';
 
 export class RegisterPatients extends React.Component {
+
     state = {
         name: '',
         birthDate: '',
         id: '',
         error: ''
     }
+
     onSubmit = () => {
         this.state.error ? this.setState({ error: '' }) : null
         event.preventDefault();
@@ -23,14 +26,16 @@ export class RegisterPatients extends React.Component {
             birthDate: '',
             id: ''
         });
+        this.props.history.push('/searchPatients');
     }
+
     render() {
         return (
             <div className="register-patients-container">
                 {this.state.error ? <ErrorAlert message={this.state.error} /> : null}
                 <form onSubmit={this.onSubmit} >
                     <div className="row">
-                        <div className="col-sm-12 col-md-7 col-lg-7">
+                        <div className="col-sm-12 col-md-8 col-lg-8">
                             <div className = "form-group">
                                 <label htmlFor="nombreCompleto">Nombre Completo</label>
                                 <input 
@@ -43,7 +48,7 @@ export class RegisterPatients extends React.Component {
                             </div>
                             
                         </div>
-                        <div className="col-sm-12 col-md-7 col-lg-7">
+                        <div className="col-sm-12 col-md-8 col-lg-8">
                             <div className = "form-group">
                                 <label htmlFor="fechaNacimiento">Fecha de Nacimiento</label>
                                 <input 
@@ -56,7 +61,7 @@ export class RegisterPatients extends React.Component {
                             </div>
                             
                         </div>
-                        <div className="col-sm-12 col-md-7 col-lg-7">
+                        <div className="col-sm-12 col-md-8 col-lg-8">
                             <div className = "form-group">
                                 <label htmlFor="idPaciente">ID del paciente</label>
                                 <input 
@@ -69,7 +74,15 @@ export class RegisterPatients extends React.Component {
                             </div>
                             
                         </div>
-                        <div className = "col-sm-12 col-md-7 col-lg-7">
+                        
+                        
+                        
+                    </div>
+                    <div className="row">
+                        <div className = "col-sm-6 col-md-4 col-lg-4">
+                            <NavLink className="btn btn-outline-danger btn-block" to="/searchPatients">Regresar</NavLink>
+                        </div>
+                        <div className = "col-sm-6 col-md-4 col-lg-4">
                             <button type="submit" className="btn btn-outline-primary btn-block ">Submit</button>
                         </div>
                         
