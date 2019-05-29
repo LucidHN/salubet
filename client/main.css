@@ -191,6 +191,26 @@ nav .navbar-nav > li a{
 .btn-round{
   border-radius: 10rem !important;
   background-color: #3BAB83 !important;
+  
+}
+
+.btn-round:hover{
+  background-color: rgb(37, 117, 89) !important;
+}
+.btn-round-no-color{
+  border-radius: 10rem !important;
+  
+}
+.btn-green-outline{
+  border: 1px solid #3BAB83 !important;
+  
+}
+
+.btn-green-outline:hover{
+  background-color: #dfdfdf !important;
+}
+.green-text{
+  color: #3BAB83 !important;
 }
 
 html, body {margin: 0; height: 100%;}
@@ -318,7 +338,7 @@ ul.bar:hover, li.bar:hover,a.bar, a.bar:hover, a.bar:focus {
   margin-left: -250px;
 }
 
- .sidebar-header {
+.sidebar-header {
   padding-top: 20px;
   padding-left: 20px;
   padding-right: 20px;
@@ -387,6 +407,10 @@ nav.nav-white-background{
 
 .search-input:active, .search-input:focus{
   background-color: #fcfcfc !important;
+}
+
+.btn-white-text{
+  color: #ffffff !important;
 }
 
 
