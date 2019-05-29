@@ -58,9 +58,8 @@ export class PatientSearch extends React.Component {
                     <div className="row">
                         <div className="col-lg-5 col-md-5 col-sm-12">
                         <input 
-                            className ="form-control"
-                            type="text" 
-                            id="search-input" 
+                            className ="form-control round-input search-input"
+                            type="text"  
                             placeholder="Buscar Cliente..." 
                             onChange={(event) => this.setState({ searchQuery: event.target.value })}
                         />
