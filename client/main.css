@@ -70,6 +70,9 @@ nav .navbar-nav > li a{
   .search-btn{
     margin-top: 20px;
   }
+  .sm-top{
+    padding-top: 10px;
+  }
 }
 
 @media (max-height: 650px){
