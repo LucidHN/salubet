@@ -1,9 +1,16 @@
 import React from 'react';
+import { withTracker } from 'meteor/react-meteor-data';
 
-export default class Home extends React.Component {
+export class Home extends React.Component {
     render () {
         return (
-            <p>Home</p>
+            <div className="home-container">
+                <h2 className = "title-patients text-center">Bienvenido(a) Dr. { this.props.user ? this.props.user.profile.name : null }</h2>
+            </div>
         );
     }
 };
+
+export default withTracker(() => ({
+    user: Meteor.user()
+}))(Home);
