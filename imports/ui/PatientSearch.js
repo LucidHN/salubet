@@ -49,7 +49,7 @@ export class PatientSearch extends React.Component {
 
     render() {
         return (
-
+            
             <div className="container">
             <h2 className = "title-patients">Pacientes</h2>
             <div className="row">
@@ -59,10 +59,9 @@ export class PatientSearch extends React.Component {
                         <div className="col-lg-5 col-md-5 col-sm-12">
                         <input 
                             className ="form-control round-input search-input"
-                            type="text"  
-                            placeholder="Buscar Cliente..." 
-                            onChange={(event) => this.setState({ searchQuery: event.target.value })}
-                        />
+                            type="search"  
+                            placeholder="Nombre o ID" 
+                            onChange={(event) => this.setState({ searchQuery: event.target.value })}                        />
                         </div>
                         <div className="col-lg-2 col-md-3 col-sm-3 sm-top">
                             <button type="submit" className="btn btn-success btn-round ">Buscar</button>
@@ -77,7 +76,7 @@ export class PatientSearch extends React.Component {
                             <tr>
                                 <th scope="col">Paciente </th>
                                 <th scope="col">Contacto</th>
-                                <th scope="col"></th>
+                                <th scope="col">Próxima cita</th>
                             </tr>
                         </thead>
                         <tbody>

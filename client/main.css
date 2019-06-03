@@ -279,7 +279,13 @@ body {
   
 }
 
-
+.home-container{
+  height: 100vh;
+  background-image: url("/theme_images/home-background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
 
 #content{
   margin-left: 250px;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Accounts } from 'meteor/accounts-base';
-
+import { Route } from 'react-router-dom'
 import MainSidebar from './MainSidebar';
 import PatientSidebar from './PatientSidebar';
 
@@ -65,10 +65,15 @@ export default class Dashboard extends React.Component {
                         <div className="collapse navbar-collapse" id="navbarNav3">
                             <ul className="navbar-nav ml-auto">
                                 <li className="nav-item ">
-                                    <a className="nav-link" >Inicio</a>
+                                    <Route render={({ history}) => (
+                                        <a className="nav-link" onClick={() => {this.changeToMainSidebar; history.push('/home') }}>Inicio</a>
+                                    )} />
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" onClick={this.changeToPatientSidebar}>Pacientes</a>
+                                    <Route render={({ history}) => (
+                                        <a className="nav-link" onClick={() => {this.changeToPatientSidebar; history.push('/searchPatients') }}>Pacientes</a>
+                                    )} />
+                                    {/* <a className="nav-link" onClick={this.changeToPatientSidebar}>Pacientes</a> */}
                                 </li>
                                 <li className="nav-item">
                                     <a className="nav-link" >Agenda</a>
