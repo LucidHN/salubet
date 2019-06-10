@@ -128,10 +128,7 @@ export default class Dashboard extends React.Component {
                 </nav> */}
                 {this.renderSidebar()}
                 <div id="content">
-                    <div className = " mt-3 ml-3">
-                        {this.props.children}
-                    </div>
-                    
+                    {this.props.children}
                 </div>
             </div>
         );
