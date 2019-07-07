@@ -111,7 +111,7 @@ export class AppointmentDashboard extends React.Component {
     render() {
         return (
             <div>
-                <nav className="navbar navbar-expand-lg navbar-main-color navbar-dark ">
+                <nav className="navbar navbar-expand-lg navbar-main-color navbar-dark navbar-fixed ">
                     
                         <a className="navbar-brand " href="#">
                             <img src='/theme_images/logo_blanco1.png' width ='60' height = '55' className = 'd-inline-block align-top' alt='Salubet Logo'></img>
@@ -159,46 +159,48 @@ export class AppointmentDashboard extends React.Component {
                         </div>
                     
                 </nav>
+                <div className="wrapper">
 
-                <nav id="sidebar">
-                    <div className="sidebar-header sidebar-main-color">
-                        <h3>Dr. { this.props.user ? this.props.user.profile.name : null }</h3>
+                    <nav id="sidebar">
+                        <div className="sidebar-header sidebar-main-color">
+                            <h3>Dr. { this.props.user ? this.props.user.profile.name : null }</h3>
+                        </div>
+                        <ul className="list-unstyled components bar">
+                            <p className="bar hospital-subheader">San Felipe</p>
+                            <li className="bar">
+                                <a className="bar" href="#">Ficha de identificacion</a>
+                            </li>
+                            <li className="bar">
+                                <a className="bar" href="#" onClick={() => this.toggleForm(0)}>Antecedentes</a>
+                            </li>
+                            
+                            <li className="bar">
+                                <a className="bar" href="#" onClick={() => this.toggleForm(1)}>Consulta</a>
+                            </li>
+                            <li className="bar">
+                                <a className="bar" href="#" onClick={() => this.toggleForm(2)}>Examenes y laboratorios</a>
+                            </li>
+                            <li className="bar">
+                                <a className="bar" href="#">Consultas Anteriores</a>
+                            </li>
+                            
+                        </ul>
+                    </nav>
+                    {this.state.toSearch ? <Redirect to='/searchPatients'/> : null}
+                    <p>{this.state.patient.name}</p>
+                    <div id="content">
+                        <form>
+
+                            
+                            {/* seccion de antecedentes */}
+                            {this.state.formSection === 0 ? this.renderAntecedentes() : this.state.formSection === 1 ? this.renderConsultas() : this.renderExamenes()}
+                            
+
+                            
+                            
+                            <button type="submit" className="btn btn-primary">Submit</button>
+                        </form>
                     </div>
-                    <ul className="list-unstyled components bar">
-                        <p className="bar hospital-subheader">San Felipe</p>
-                        <li className="bar">
-                            <a className="bar" href="#">Ficha de identificacion</a>
-                        </li>
-                        <li className="bar">
-                            <a className="bar" href="#" onClick={() => this.toggleForm(0)}>Antecedentes</a>
-                        </li>
-                        
-                        <li className="bar">
-                            <a className="bar" href="#" onClick={() => this.toggleForm(1)}>Consulta</a>
-                        </li>
-                        <li className="bar">
-                            <a className="bar" href="#" onClick={() => this.toggleForm(2)}>Examenes y laboratorios</a>
-                        </li>
-                        <li className="bar">
-                            <a className="bar" href="#">Consultas Anteriores</a>
-                        </li>
-                        
-                    </ul>
-                </nav>
-                {this.state.toSearch ? <Redirect to='/searchPatients'/> : null}
-                <p>{this.state.patient.name}</p>
-                <div id="content">
-                    <form>
-
-                        
-                        {/* seccion de antecedentes */}
-                        {this.state.formSection === 0 ? this.renderAntecedentes() : this.state.formSection === 1 ? this.renderConsultas() : this.renderExamenes()}
-                        
-
-                        
-                        
-                        <button type="submit" className="btn btn-primary">Submit</button>
-                    </form>
                 </div>
             </div>
         );
