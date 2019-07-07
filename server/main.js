@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 
 import '../imports/api/users';
 import '../imports/api/patients';
+import '../imports/api/appointments';
 import '../imports/startup/simple-schema-configuration.js';
 import '../imports/email/emailTemplates';
 
