@@ -1,7 +1,7 @@
 import React from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { Patients } from '../api/patients';
 
@@ -32,7 +32,12 @@ export class PatientSearch extends React.Component {
             <tr key={patient._id}>
                 <th scope="row">{ patient.name } <br/> Apellidos <br/> { patient.id } </th>
                 <td> Correo <br/> Teléfono </td>
-                <td><button className="btn btn-success btn-round">+ Iniciar Cita</button></td>
+                <td><Link className="btn btn-success btn-round" to={{
+                    pathname: '/appointment',
+                    state: {
+                        patient
+                    }
+                }}>+ Iniciar Cita</Link></td>
             </tr>
         ))
     )
@@ -67,7 +72,7 @@ export class PatientSearch extends React.Component {
                             <button type="submit" className="btn btn-success btn-round ">Buscar</button>
                         </div>
                         <div className="col-lg-3 col-md-4 col-sm-6 sm-top">
-                            <NavLink className="btn btn-success btn-round " to="/registerPatients">Crear paciente</NavLink>
+                            <Link className="btn btn-success btn-round " to="/registerPatients">Crear paciente</Link>
                         </div>
                     </div>
                     </form>
