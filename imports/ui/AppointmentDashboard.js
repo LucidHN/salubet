@@ -3,53 +3,30 @@ import { Accounts } from 'meteor/accounts-base';
 import { Route } from 'react-router-dom'
 import MainSidebar from './MainSidebar';
 import PatientSidebar from './PatientSidebar';
+import { withTracker } from 'meteor/react-meteor-data';
 
-export default class zDashboard extends React.Component {
+export class AppointmentDashboard extends React.Component {
     state = {
         patient: {
 
         },
         patientSidebar: false,
         mainSidebar: true,
-        activebar:false
+        activebar:false,
+        sidebar: 'inactive'
     }
 
 
     componentDidMount = () => {
         this.setState({patient: this.props.location.state.patient});
+        $("#sidebar").mCustomScrollbar({
+            theme: "minimal"
+        });
+
     }
-    renderSidebar = () => {
-        if(this.state.mainSidebar){
-            return(
-                <MainSidebar/>
-            );
-        }else if(this.state.patientSidebar){
-            return(
-                <PatientSidebar/>
-            );
-        }else{
-            return(
-                <div>ERROR</div>
-            );
-        }
-    }
-    changeToPatientSidebar = () => {
-        if(!this.state.activebar){
-            this.setState({
-                patientSidebar:true,
-                mainSidebar:false
-            });
-            
-        }
-    }
-    changeToMainSidebar = () => {
-        if(!this.state.activebar){
-            this.setState({
-                patientSidebar:false,
-                mainSidebar:true
-            });
-        }
-    }
+    
+
+
     handleToggle = () => {
         this.setState({ sidebar: 'active', activebar:!this.state.activebar }, () => {
             $('#sidebar').toggleClass('active');
@@ -57,6 +34,16 @@ export default class zDashboard extends React.Component {
             $('.collapse.in').toggleClass('in');
             $('a[aria-expanded=true]').attr('aria-expanded', 'false');
         });
+    }
+
+    renderConsultas = () => {
+
+    }
+    renderConsultas = () => {
+        
+    }
+    renderConsultas = () => {
+        
     }
     render() {
         return (
@@ -110,69 +97,69 @@ export default class zDashboard extends React.Component {
                     
                 </nav>
 
-
-
-
-
-
-                
-                {/* <nav className="navbar navbar-expand-lg navbar-light  nav-white-background">
-                    <div className="container-fluid">
-                        <button onClick={this.handleToggle} type="button" id="sidebarCollapse" className="btn btn-info">
-                            <span>Toggle Sidebar</span>
-                        </button>
-                        <ul className="navbar-nav">
-                            <li className="nav-item">
-                                <a className="nav-link" onClick={this.changeToPatientSidebar}>Pacientes</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" onClick={this.changeToMainSidebar}>Expedientes</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" onClick={() => Accounts.logout()}>Logout</a>
-                            </li>
-                        </ul>
+                <nav id="sidebar">
+                    <div className="sidebar-header sidebar-main-color">
+                        <h3>Dr. { this.props.user ? this.props.user.profile.name : null }</h3>
                     </div>
-                </nav> */}
-                {this.renderSidebar()}
+                    <ul className="list-unstyled components bar">
+                        <p className="bar hospital-subheader">San Felipe</p>
+                        <li className="bar">
+                            <a className="bar" href="#">Ficha de identificacion</a>
+                        </li>
+                        <li className="bar">
+                            <a className="bar" href="#">Antecedentes</a>
+                        </li>
+                        
+                        <li className="bar">
+                            <a className="bar" href="#">Consulta</a>
+                        </li>
+                        <li className="bar">
+                            <a className="bar" href="#">Examenes y laboratorios</a>
+                        </li>
+                        <li className="bar">
+                            <a className="bar" href="#">Consultas Anteriores</a>
+                        </li>
+                        
+                    </ul>
+                </nav>
                 <div id="content">
                     <form>
                         {/* seccion de antecedentes */}
                         <div className="form-group">
-                            <label for="antecedentes">antecedentes</label>
+                            <label htmlFor="antecedentes">antecedentes</label>
                             <textarea className="form-control" id="antecedentes" rows="3"></textarea>
                         </div>
                         {/* seccion de consultas */}
 
                         <div className="form-group">
-                            <label for="signos-vitales-antropometria">signos-vitales-antropometria</label>
+                            <label htmlFor="signos-vitales-antropometria">signos-vitales-antropometria</label>
                             <textarea className="form-control" id="signos-vitales-antropometria" rows="3"></textarea>
                         </div>
                         <div className="form-group">
-                            <label for="tratamiento-receta">tratamiento-receta</label>
+                            <label htmlFor="tratamiento-receta">tratamiento-receta</label>
                             <textarea className="form-control" id="tratamiento-receta" rows="3"></textarea>
                         </div>
                         <div className="form-group">
-                            <label for="examenes">examenes</label>
+                            <label htmlFor="examenes">examenes</label>
                             <textarea className="form-control" id="examenes" rows="3"></textarea>
                         </div>
                         <div className="form-group">
-                            <label for="analisis">analisis</label>
+                            <label htmlFor="analisis">analisis</label>
                             <textarea className="form-control" id="analisis" rows="3"></textarea>
                         </div>
                         <div className="form-group">
-                            <label for="diagnostico">diagnostico</label>
+                            <label htmlFor="diagnostico">diagnostico</label>
                             <textarea className="form-control" id="diagnostico" rows="3"></textarea>
                         </div>
 
                         {/* seccion de examenes y laboratorios */}
 
                         <div className="form-group">
-                            <label for="analisis-laboratorio">analisis-laboratorio</label>
+                            <label htmlFor="analisis-laboratorio">analisis-laboratorio</label>
                             <textarea className="form-control" id="analisis-laboratorio" rows="3"></textarea>
                         </div>
                         <div className="form-group">
-                            <label for="diagnostico-laboratorio">diagnostico-laboratorio</label>
+                            <label htmlFor="diagnostico-laboratorio">diagnostico-laboratorio</label>
                             <textarea className="form-control" id="diagnostico-laboratorio" rows="3"></textarea>
                         </div>
 
@@ -185,3 +172,7 @@ export default class zDashboard extends React.Component {
         );
     }
 }
+
+export default withTracker(() => ({
+    user: Meteor.user()
+}))(AppointmentDashboard);
