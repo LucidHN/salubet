@@ -36,18 +36,61 @@ export class AppointmentDashboard extends React.Component {
         });
     }
 
-    renderConsultas = () => {
+    renderAntecedentes = () => {
+        return(
 
+            <div className="form-group">
+                <label htmlFor="antecedentes">antecedentes</label>
+                <textarea className="form-control" id="antecedentes" rows="3"></textarea>
+            </div>
+        );
     }
     renderConsultas = () => {
-        
+        return(
+
+            <div>
+
+                <div className="form-group">
+                    <label htmlFor="signos-vitales-antropometria">signos-vitales-antropometria</label>
+                    <textarea className="form-control" id="signos-vitales-antropometria" rows="3"></textarea>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="tratamiento-receta">tratamiento-receta</label>
+                    <textarea className="form-control" id="tratamiento-receta" rows="3"></textarea>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="examenes">examenes</label>
+                    <textarea className="form-control" id="examenes" rows="3"></textarea>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="analisis">analisis</label>
+                    <textarea className="form-control" id="analisis" rows="3"></textarea>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="diagnostico">diagnostico</label>
+                    <textarea className="form-control" id="diagnostico" rows="3"></textarea>
+                </div>
+            </div>
+        );
     }
-    renderConsultas = () => {
-        
+    renderExamenes = () => {
+        return(
+            <div>
+
+                <div className="form-group">
+                    <label htmlFor="analisis-laboratorio">analisis-laboratorio</label>
+                    <textarea className="form-control" id="analisis-laboratorio" rows="3"></textarea>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="diagnostico-laboratorio">diagnostico-laboratorio</label>
+                    <textarea className="form-control" id="diagnostico-laboratorio" rows="3"></textarea>
+                </div>
+            </div>
+        );
     }
     render() {
         return (
-            <div >
+            <div>
                 <nav className="navbar navbar-expand-lg navbar-main-color navbar-dark ">
                     
                         <a className="navbar-brand " href="#">
@@ -124,44 +167,15 @@ export class AppointmentDashboard extends React.Component {
                 </nav>
                 <div id="content">
                     <form>
+
+                        
                         {/* seccion de antecedentes */}
-                        <div className="form-group">
-                            <label htmlFor="antecedentes">antecedentes</label>
-                            <textarea className="form-control" id="antecedentes" rows="3"></textarea>
-                        </div>
+                        {this.renderAntecedentes()}
                         {/* seccion de consultas */}
-
-                        <div className="form-group">
-                            <label htmlFor="signos-vitales-antropometria">signos-vitales-antropometria</label>
-                            <textarea className="form-control" id="signos-vitales-antropometria" rows="3"></textarea>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="tratamiento-receta">tratamiento-receta</label>
-                            <textarea className="form-control" id="tratamiento-receta" rows="3"></textarea>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="examenes">examenes</label>
-                            <textarea className="form-control" id="examenes" rows="3"></textarea>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="analisis">analisis</label>
-                            <textarea className="form-control" id="analisis" rows="3"></textarea>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="diagnostico">diagnostico</label>
-                            <textarea className="form-control" id="diagnostico" rows="3"></textarea>
-                        </div>
-
+                        {this.renderConsultas()}
                         {/* seccion de examenes y laboratorios */}
-
-                        <div className="form-group">
-                            <label htmlFor="analisis-laboratorio">analisis-laboratorio</label>
-                            <textarea className="form-control" id="analisis-laboratorio" rows="3"></textarea>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="diagnostico-laboratorio">diagnostico-laboratorio</label>
-                            <textarea className="form-control" id="diagnostico-laboratorio" rows="3"></textarea>
-                        </div>
+                        {this.renderExamenes()}
+                        
 
                         
                         
