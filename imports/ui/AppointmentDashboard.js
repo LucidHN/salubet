@@ -1,6 +1,6 @@
 import React from 'react';
 import { Accounts } from 'meteor/accounts-base';
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import MainSidebar from './MainSidebar';
 import PatientSidebar from './PatientSidebar';
 import { withTracker } from 'meteor/react-meteor-data';
@@ -13,15 +13,30 @@ export class AppointmentDashboard extends React.Component {
         patientSidebar: false,
         mainSidebar: true,
         activebar:false,
-        sidebar: 'inactive'
+        toSearch: false,
+        sidebar: 'inactive',
+        formSection: 0,
+        antecedentes: '',
+        signosVitalesAntropometria: '',
+        tratamientoReceta: '',
+        examenes: '',
+        analisis: '',
+        diagnostico: '',
+        analisisLab: '',
+        diagnosticoLab: ''
     }
 
 
     componentDidMount = () => {
-        this.setState({patient: this.props.location.state.patient});
-        $("#sidebar").mCustomScrollbar({
-            theme: "minimal"
-        });
+        if(!this.props.location.state){
+            this.setState({toSearch: true});
+        }else{
+            this.setState({patient: this.props.location.state.patient});
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+        }
+        
 
     }
     
@@ -36,12 +51,16 @@ export class AppointmentDashboard extends React.Component {
         });
     }
 
+    toggleForm = (section) => {
+        this.setState({formSection: section});
+    } 
+
     renderAntecedentes = () => {
         return(
 
             <div className="form-group">
                 <label htmlFor="antecedentes">antecedentes</label>
-                <textarea className="form-control" id="antecedentes" rows="3"></textarea>
+                <textarea className="form-control" id="antecedentes" rows="3" value={this.state.antecedentes} onChange={(e) => this.setState({antecedentes: e.target.value})}></textarea>
             </div>
         );
     }
@@ -52,23 +71,23 @@ export class AppointmentDashboard extends React.Component {
 
                 <div className="form-group">
                     <label htmlFor="signos-vitales-antropometria">signos-vitales-antropometria</label>
-                    <textarea className="form-control" id="signos-vitales-antropometria" rows="3"></textarea>
+                    <textarea className="form-control" id="signos-vitales-antropometria" rows="3" value={this.state.signosVitalesAntropometria} onChange={(e) => this.setState({signosVitalesAntropometria: e.target.value})}></textarea>
                 </div>
                 <div className="form-group">
                     <label htmlFor="tratamiento-receta">tratamiento-receta</label>
-                    <textarea className="form-control" id="tratamiento-receta" rows="3"></textarea>
+                    <textarea className="form-control" id="tratamiento-receta" rows="3" value={this.state.tratamientoReceta} onChange={(e) => this.setState({tratamientoReceta: e.target.value})}></textarea>
                 </div>
                 <div className="form-group">
                     <label htmlFor="examenes">examenes</label>
-                    <textarea className="form-control" id="examenes" rows="3"></textarea>
+                    <textarea className="form-control" id="examenes" rows="3" value={this.state.examenes} onChange={(e) => this.setState({examenes: e.target.value})}></textarea>
                 </div>
                 <div className="form-group">
                     <label htmlFor="analisis">analisis</label>
-                    <textarea className="form-control" id="analisis" rows="3"></textarea>
+                    <textarea className="form-control" id="analisis" rows="3" value={this.state.analisis} onChange={(e) => this.setState({analisis: e.target.value})}></textarea>
                 </div>
                 <div className="form-group">
                     <label htmlFor="diagnostico">diagnostico</label>
-                    <textarea className="form-control" id="diagnostico" rows="3"></textarea>
+                    <textarea className="form-control" id="diagnostico" rows="3" value={this.state.diagnostico} onChange={(e) => this.setState({diagnostico: e.target.value})}></textarea>
                 </div>
             </div>
         );
@@ -79,15 +98,16 @@ export class AppointmentDashboard extends React.Component {
 
                 <div className="form-group">
                     <label htmlFor="analisis-laboratorio">analisis-laboratorio</label>
-                    <textarea className="form-control" id="analisis-laboratorio" rows="3"></textarea>
+                    <textarea className="form-control" id="analisis-laboratorio" rows="3" value={this.state.analisisLab} onChange={(e) => this.setState({analisisLab: e.target.value})}></textarea>
                 </div>
                 <div className="form-group">
                     <label htmlFor="diagnostico-laboratorio">diagnostico-laboratorio</label>
-                    <textarea className="form-control" id="diagnostico-laboratorio" rows="3"></textarea>
+                    <textarea className="form-control" id="diagnostico-laboratorio" rows="3" value={this.state.diagnosticoLab} onChange={(e) => this.setState({diagnosticoLab: e.target.value})}></textarea>
                 </div>
             </div>
         );
     }
+
     render() {
         return (
             <div>
@@ -150,14 +170,14 @@ export class AppointmentDashboard extends React.Component {
                             <a className="bar" href="#">Ficha de identificacion</a>
                         </li>
                         <li className="bar">
-                            <a className="bar" href="#">Antecedentes</a>
+                            <a className="bar" href="#" onClick={() => this.toggleForm(0)}>Antecedentes</a>
                         </li>
                         
                         <li className="bar">
-                            <a className="bar" href="#">Consulta</a>
+                            <a className="bar" href="#" onClick={() => this.toggleForm(1)}>Consulta</a>
                         </li>
                         <li className="bar">
-                            <a className="bar" href="#">Examenes y laboratorios</a>
+                            <a className="bar" href="#" onClick={() => this.toggleForm(2)}>Examenes y laboratorios</a>
                         </li>
                         <li className="bar">
                             <a className="bar" href="#">Consultas Anteriores</a>
@@ -165,16 +185,14 @@ export class AppointmentDashboard extends React.Component {
                         
                     </ul>
                 </nav>
+                {this.state.toSearch ? <Redirect to='/searchPatients'/> : null}
+                <p>{this.state.patient.name}</p>
                 <div id="content">
                     <form>
 
                         
                         {/* seccion de antecedentes */}
-                        {this.renderAntecedentes()}
-                        {/* seccion de consultas */}
-                        {this.renderConsultas()}
-                        {/* seccion de examenes y laboratorios */}
-                        {this.renderExamenes()}
+                        {this.state.formSection === 0 ? this.renderAntecedentes() : this.state.formSection === 1 ? this.renderConsultas() : this.renderExamenes()}
                         
 
                         
