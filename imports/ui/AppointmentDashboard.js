@@ -4,11 +4,19 @@ import { Route } from 'react-router-dom'
 import MainSidebar from './MainSidebar';
 import PatientSidebar from './PatientSidebar';
 
-export default class Dashboard extends React.Component {
+export default class zDashboard extends React.Component {
     state = {
+        patient: {
+
+        },
         patientSidebar: false,
         mainSidebar: true,
         activebar:false
+    }
+
+
+    componentDidMount = () => {
+        this.setState({patient: this.props.location.state.patient});
     }
     renderSidebar = () => {
         if(this.state.mainSidebar){
@@ -90,9 +98,9 @@ export default class Dashboard extends React.Component {
                                         <button className="dropdown-item" onClick={() => Accounts.logout()} type="button" >
                                             <span>Salir</span>
                                         </button>
-                                        {/* <button className="dropdown-item" onClick={this.handleToggle} type="button" id="sidebarCollapse" >
+                                        <button className="dropdown-item" onClick={this.handleToggle} type="button" id="sidebarCollapse" >
                                             <span>Barra lateral</span>
-                                        </button> */}
+                                        </button>
                                         
                                     </div>
                                 </li>
@@ -126,9 +134,52 @@ export default class Dashboard extends React.Component {
                         </ul>
                     </div>
                 </nav> */}
-                {/* {this.renderSidebar()} */}
+                {this.renderSidebar()}
                 <div id="content">
-                    {this.props.children}
+                    <form>
+                        {/* seccion de antecedentes */}
+                        <div className="form-group">
+                            <label for="antecedentes">antecedentes</label>
+                            <textarea className="form-control" id="antecedentes" rows="3"></textarea>
+                        </div>
+                        {/* seccion de consultas */}
+
+                        <div className="form-group">
+                            <label for="signos-vitales-antropometria">signos-vitales-antropometria</label>
+                            <textarea className="form-control" id="signos-vitales-antropometria" rows="3"></textarea>
+                        </div>
+                        <div className="form-group">
+                            <label for="tratamiento-receta">tratamiento-receta</label>
+                            <textarea className="form-control" id="tratamiento-receta" rows="3"></textarea>
+                        </div>
+                        <div className="form-group">
+                            <label for="examenes">examenes</label>
+                            <textarea className="form-control" id="examenes" rows="3"></textarea>
+                        </div>
+                        <div className="form-group">
+                            <label for="analisis">analisis</label>
+                            <textarea className="form-control" id="analisis" rows="3"></textarea>
+                        </div>
+                        <div className="form-group">
+                            <label for="diagnostico">diagnostico</label>
+                            <textarea className="form-control" id="diagnostico" rows="3"></textarea>
+                        </div>
+
+                        {/* seccion de examenes y laboratorios */}
+
+                        <div className="form-group">
+                            <label for="analisis-laboratorio">analisis-laboratorio</label>
+                            <textarea className="form-control" id="analisis-laboratorio" rows="3"></textarea>
+                        </div>
+                        <div className="form-group">
+                            <label for="diagnostico-laboratorio">diagnostico-laboratorio</label>
+                            <textarea className="form-control" id="diagnostico-laboratorio" rows="3"></textarea>
+                        </div>
+
+                        
+                        
+                        <button type="submit" className="btn btn-primary">Submit</button>
+                    </form>
                 </div>
             </div>
         );
