@@ -1,29 +1,33 @@
 import React from 'react';
 import { Accounts } from 'meteor/accounts-base';
 import { Route, Redirect } from 'react-router-dom'
-import MainSidebar from './MainSidebar';
-import PatientSidebar from './PatientSidebar';
 import { withTracker } from 'meteor/react-meteor-data';
+import moment from 'moment';
+
+import { Appointments } from '../api/appointments';
 
 export class AppointmentDashboard extends React.Component {
     state = {
         patient: {
 
         },
+        appointments: [],
         patientSidebar: false,
         mainSidebar: true,
         activebar:false,
         toSearch: false,
         sidebar: 'inactive',
         formSection: 0,
-        antecedentes: '',
-        signosVitalesAntropometria: '',
-        tratamientoReceta: '',
-        examenes: '',
-        analisis: '',
-        diagnostico: '',
-        analisisLab: '',
-        diagnosticoLab: ''
+        medicalHistory: '',
+        vitalSignsAnthropometry: '',
+        treatmentRecipe: '',
+        exams: '',
+        analysis: '',
+        diagnosis: '',
+        analysisLab: '',
+        diagnosisLab: '',
+        date: moment().format(''),
+        error: ''
     }
 
 
@@ -53,21 +57,35 @@ export class AppointmentDashboard extends React.Component {
 
     toggleForm = (section) => {
         this.setState({formSection: section});
+        if(section === 3){
+            this.props.call('appointments.search', this.state.patient.id, (error, result) => {
+                if(!error){
+                    console.log('Appointments: ',result);
+                    this.setState({appointments: result});
+                }else{
+                    console.log('Error: ', error.message);
+                    this.setState({appointments: [], error: error.message});
+                }
+            });
+        }
     } 
 
     renderAntecedentes = () => {
         return(
+
             <div className = "row">
                 <div className = "col-sm-12 col-md-6 col-lg-6">
                     <div className="form-group">
                         <label htmlFor="antecedentes"><h4 className = "title-main-color">Antecedentes</h4></label>
-                        <textarea className="form-control textarea-round" id="antecedentes" rows="3" value={this.state.antecedentes} onChange={(e) => this.setState({antecedentes: e.target.value})}></textarea>
+                        <textarea className="form-control textarea-round" id="antecedentes" rows="3" value={this.state.medicalHistory} onChange={(e) => this.setState({medicalHistory: e.target.value})}></textarea>
                     </div>
                 </div>
+
             </div>
             
         );
     }
+
     renderConsultas = () => {
         return(
 
@@ -76,57 +94,108 @@ export class AppointmentDashboard extends React.Component {
                 <div className = "col-sm-12 col-md-4 col-lg-4">
                     <div className="form-group">
                         <label htmlFor="signos-vitales-antropometria"><h5 className = "title-main-color">Signos Vitales y Antropometría</h5></label>
-                        <textarea className="form-control textarea-round" id="signos-vitales-antropometria" rows="3" value={this.state.signosVitalesAntropometria} onChange={(e) => this.setState({signosVitalesAntropometria: e.target.value})}></textarea>
+                        <textarea className="form-control textarea-round" id="signos-vitales-antropometria" rows="3" value={this.state.vitalSignsAnthropometry} onChange={(e) => this.setState({vitalSignsAnthropometry: e.target.value})}></textarea>
                     </div>                    
                 </div>
 
                 <div className = "col-sm-12 col-md-7 col-lg-7">
                     <div className="form-group">
                         <label htmlFor="tratamiento-receta"><h5 className = "title-main-color">Tratamiento y Receta</h5></label>
-                        <textarea className="form-control textarea-round" id="tratamiento-receta" rows="3" value={this.state.tratamientoReceta} onChange={(e) => this.setState({tratamientoReceta: e.target.value})}></textarea>
+                        <textarea className="form-control textarea-round" id="tratamiento-receta" rows="3" value={this.state.treatmentRecipe} onChange={(e) => this.setState({treatmentRecipe: e.target.value})}></textarea>
                     </div>                    
                 </div>
 
                 <div className = "col-sm-12 col-md-5 col-lg-5">
                     <div className="form-group">
                         <label htmlFor="examenes"><h5 className = "title-main-color">Exámenes</h5></label>
-                        <textarea className="form-control textarea-round" id="examenes" rows="3" value={this.state.examenes} onChange={(e) => this.setState({examenes: e.target.value})}></textarea>
+                        <textarea className="form-control textarea-round" id="examenes" rows="3" value={this.state.exams} onChange={(e) => this.setState({exams: e.target.value})}></textarea>
                     </div>
                 </div>
 
                 <div className = "col-sm-12 col-md-4 col-lg-3">
                     <div className="form-group">
                         <label htmlFor="analisis"><h5 className = "title-main-color">Análisis</h5></label>
-                        <textarea className="form-control textarea-round" id="analisis" rows="3" value={this.state.analisis} onChange={(e) => this.setState({analisis: e.target.value})}></textarea>
+                        <textarea className="form-control textarea-round" id="analisis" rows="3" value={this.state.analysis} onChange={(e) => this.setState({analysis: e.target.value})}></textarea>
                     </div>
                 </div>
 
                 <div className = "col-sm-12 col-md-3 col-lg-3">
                     <div className="form-group">
                         <label htmlFor="diagnostico"><h5 className = "title-main-color">Diagnóstico</h5></label>
-                        <textarea className="form-control textarea-round" id="diagnostico" rows="3" value={this.state.diagnostico} onChange={(e) => this.setState({diagnostico: e.target.value})}></textarea>
+                        <textarea className="form-control textarea-round" id="diagnostico" rows="3" value={this.state.diagnosis} onChange={(e) => this.setState({diagnosis: e.target.value})}></textarea>
                     </div>
+
                 </div>
             </div>
         );
     }
+
     renderExamenes = () => {
         return(
+
             <div className = "row">
                 <div className = "col-sm-12 col-md-8 col-lg-8">
                     <div className="form-group">
                         <label htmlFor="analisis-laboratorio"><h5 className = "title-main-color">Exámenes</h5></label>
-                        <textarea className="form-control textarea-round" id="analisis-laboratorio" rows="3" value={this.state.analisisLab} onChange={(e) => this.setState({analisisLab: e.target.value})}></textarea>
+                        <textarea className="form-control textarea-round" id="analisis-laboratorio" rows="3" value={this.state.analysisLab} onChange={(e) => this.setState({analysisLab: e.target.value})}></textarea>
                     </div>
                 </div>
                 <div className = "col-sm-12 col-md-8 col-lg-8">
                     <div className="form-group">
                         <label htmlFor="diagnostico-laboratorio"><h5 className = "title-main-color">Análisis</h5></label>
-                        <textarea className="form-control textarea-round" id="diagnostico-laboratorio" rows="3" value={this.state.diagnosticoLab} onChange={(e) => this.setState({diagnosticoLab: e.target.value})}></textarea>
+                        <textarea className="form-control textarea-round" id="diagnostico-laboratorio" rows="3" value={this.state.diagnosisLab} onChange={(e) => this.setState({diagnosisLab: e.target.value})}></textarea>
                     </div>
+
                 </div>
             </div>
         );
+    }
+
+    renderPreviousAppointments = () => {
+        return (
+            <div>
+                <h3>Consultas Anteriores</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Abrir Archivo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.state.appointments.map((appointment) => (
+                            <tr key={appointment._id}>
+                                <td>{appointment.date}</td>
+                                <td><button className="btn btn-primary">+ Abrir Expediente</button></td>
+                            </tr>
+                        ))}
+                    </tbody> 
+                </table>
+            </div>
+        );
+    }
+
+    onSubmit = (event) => {
+        event.preventDefault();
+        this.props.call('appointments.add', {
+            patientId: this.state.patient.id,
+            ...this.state
+        }, (error) => {
+            error ? this.setState({ error: error.message }) : null;
+        });
+        this.setState({
+            formSection: 3,
+            medicalHistory: '',
+            vitalSignsAnthropometry: '',
+            treatmentRecipe: '',
+            exams: '',
+            analysis: '',
+            diagnosis: '',
+            analysisLab: '',
+            diagnosisLab: '',
+            date: moment().format(''),
+            error: ''
+        });
     }
 
     render() {
@@ -152,7 +221,6 @@ export class AppointmentDashboard extends React.Component {
                                     <Route render={({ history}) => (
                                         <a className="nav-link" onClick={() => {this.changeToPatientSidebar; history.push('/searchPatients') }}>Pacientes</a>
                                     )} />
-                                    {/* <a className="nav-link" onClick={this.changeToPatientSidebar}>Pacientes</a> */}
                                 </li>
                                 <li className="nav-item">
                                     <a className="nav-link" >Agenda</a>
@@ -205,7 +273,7 @@ export class AppointmentDashboard extends React.Component {
                                 <a className="bar" href="#">Consultas Anteriores</a>
                             </li>
                             <li className="bar btn-sidebar-item">
-                                <button type="submit" className="btn btn-success btn-round btn-sidebar-item ">Guardar</button>
+                                <button form="appointmentForm" type="submit" className="btn btn-success btn-round btn-sidebar-item ">Guardar</button>
                             </li>
                             
                         </ul>
@@ -215,27 +283,34 @@ export class AppointmentDashboard extends React.Component {
                     <div id="content" className = "mt-3">
                         <div className="container">
 
-                            <form>
-                                
-                                {/* seccion de antecedentes */}
-                                {this.state.formSection === 0 ? this.renderAntecedentes() : this.state.formSection === 1 ? this.renderConsultas() : this.renderExamenes()}
-                                
-                                
-                                
-                                
+                        <form id="appointmentForm" onSubmit={this.onSubmit}>
 
-                                
-                                
-                                {/* <button type="submit" className="btn btn-success btn-round">Guardar</button> */}
-                            </form>
+                            {this.state.formSection === 0 ? 
+                                this.renderAntecedentes() 
+                            : this.state.formSection === 1 ? 
+                                this.renderConsultas()     
+                            : this.state.formSection === 2 ?
+                                this.renderExamenes()
+                            :   null}
+
+                        </form>
+                        {this.state.formSection === 3 ? 
+                        this.renderPreviousAppointments()
+                        :   null}
                         </div>
                     </div>
+
                 </div>
             </div>
         );
     }
 }
 
-export default withTracker(() => ({
-    user: Meteor.user()
-}))(AppointmentDashboard);
+export default withTracker(() =>{
+    Meteor.subscribe('appointments');
+
+    return {
+        appointments: Appointments.find({}).fetch(),
+        call: Meteor.call
+    }
+})(AppointmentDashboard);

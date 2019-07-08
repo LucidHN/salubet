@@ -17,7 +17,7 @@ export class RegisterPatients extends React.Component {
     onSubmit = () => {
         this.state.error ? this.setState({ error: '' }) : null
         event.preventDefault();
-        this.props.call('patients.add', { ...this.state}, (error) => (
+        this.props.call('patients.add', { ...this.state }, (error) => (
                 error ? this.setState({ error: error.message }) : null
             )
         );
