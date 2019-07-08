@@ -19,7 +19,7 @@
 /*Override of bootstrap classes*/
 
 .navbar {
-  height: 100px;
+  min-height: 100px;
 }
 .navbar-fixed {
   position: fixed !important;
