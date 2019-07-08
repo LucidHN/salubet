@@ -57,52 +57,73 @@ export class AppointmentDashboard extends React.Component {
 
     renderAntecedentes = () => {
         return(
-
-            <div className="form-group">
-                <label htmlFor="antecedentes">antecedentes</label>
-                <textarea className="form-control" id="antecedentes" rows="3" value={this.state.antecedentes} onChange={(e) => this.setState({antecedentes: e.target.value})}></textarea>
+            <div className = "row">
+                <div className = "col-sm-12 col-md-6 col-lg-6">
+                    <div className="form-group">
+                        <label htmlFor="antecedentes"><h4 className = "title-main-color">Antecedentes</h4></label>
+                        <textarea className="form-control textarea-round" id="antecedentes" rows="3" value={this.state.antecedentes} onChange={(e) => this.setState({antecedentes: e.target.value})}></textarea>
+                    </div>
+                </div>
             </div>
+            
         );
     }
     renderConsultas = () => {
         return(
 
-            <div>
+            <div className = "row">
+                
+                <div className = "col-sm-12 col-md-4 col-lg-4">
+                    <div className="form-group">
+                        <label htmlFor="signos-vitales-antropometria"><h5 className = "title-main-color">Signos Vitales y Antropometría</h5></label>
+                        <textarea className="form-control textarea-round" id="signos-vitales-antropometria" rows="3" value={this.state.signosVitalesAntropometria} onChange={(e) => this.setState({signosVitalesAntropometria: e.target.value})}></textarea>
+                    </div>                    
+                </div>
 
-                <div className="form-group">
-                    <label htmlFor="signos-vitales-antropometria">signos-vitales-antropometria</label>
-                    <textarea className="form-control" id="signos-vitales-antropometria" rows="3" value={this.state.signosVitalesAntropometria} onChange={(e) => this.setState({signosVitalesAntropometria: e.target.value})}></textarea>
+                <div className = "col-sm-12 col-md-7 col-lg-7">
+                    <div className="form-group">
+                        <label htmlFor="tratamiento-receta"><h5 className = "title-main-color">Tratamiento y Receta</h5></label>
+                        <textarea className="form-control textarea-round" id="tratamiento-receta" rows="3" value={this.state.tratamientoReceta} onChange={(e) => this.setState({tratamientoReceta: e.target.value})}></textarea>
+                    </div>                    
                 </div>
-                <div className="form-group">
-                    <label htmlFor="tratamiento-receta">tratamiento-receta</label>
-                    <textarea className="form-control" id="tratamiento-receta" rows="3" value={this.state.tratamientoReceta} onChange={(e) => this.setState({tratamientoReceta: e.target.value})}></textarea>
+
+                <div className = "col-sm-12 col-md-5 col-lg-5">
+                    <div className="form-group">
+                        <label htmlFor="examenes"><h5 className = "title-main-color">Exámenes</h5></label>
+                        <textarea className="form-control textarea-round" id="examenes" rows="3" value={this.state.examenes} onChange={(e) => this.setState({examenes: e.target.value})}></textarea>
+                    </div>
                 </div>
-                <div className="form-group">
-                    <label htmlFor="examenes">examenes</label>
-                    <textarea className="form-control" id="examenes" rows="3" value={this.state.examenes} onChange={(e) => this.setState({examenes: e.target.value})}></textarea>
+
+                <div className = "col-sm-12 col-md-4 col-lg-3">
+                    <div className="form-group">
+                        <label htmlFor="analisis"><h5 className = "title-main-color">Análisis</h5></label>
+                        <textarea className="form-control textarea-round" id="analisis" rows="3" value={this.state.analisis} onChange={(e) => this.setState({analisis: e.target.value})}></textarea>
+                    </div>
                 </div>
-                <div className="form-group">
-                    <label htmlFor="analisis">analisis</label>
-                    <textarea className="form-control" id="analisis" rows="3" value={this.state.analisis} onChange={(e) => this.setState({analisis: e.target.value})}></textarea>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="diagnostico">diagnostico</label>
-                    <textarea className="form-control" id="diagnostico" rows="3" value={this.state.diagnostico} onChange={(e) => this.setState({diagnostico: e.target.value})}></textarea>
+
+                <div className = "col-sm-12 col-md-3 col-lg-3">
+                    <div className="form-group">
+                        <label htmlFor="diagnostico"><h5 className = "title-main-color">Diagnóstico</h5></label>
+                        <textarea className="form-control textarea-round" id="diagnostico" rows="3" value={this.state.diagnostico} onChange={(e) => this.setState({diagnostico: e.target.value})}></textarea>
+                    </div>
                 </div>
             </div>
         );
     }
     renderExamenes = () => {
         return(
-            <div>
-
-                <div className="form-group">
-                    <label htmlFor="analisis-laboratorio">analisis-laboratorio</label>
-                    <textarea className="form-control" id="analisis-laboratorio" rows="3" value={this.state.analisisLab} onChange={(e) => this.setState({analisisLab: e.target.value})}></textarea>
+            <div className = "row">
+                <div className = "col-sm-12 col-md-8 col-lg-8">
+                    <div className="form-group">
+                        <label htmlFor="analisis-laboratorio"><h5 className = "title-main-color">Exámenes</h5></label>
+                        <textarea className="form-control textarea-round" id="analisis-laboratorio" rows="3" value={this.state.analisisLab} onChange={(e) => this.setState({analisisLab: e.target.value})}></textarea>
+                    </div>
                 </div>
-                <div className="form-group">
-                    <label htmlFor="diagnostico-laboratorio">diagnostico-laboratorio</label>
-                    <textarea className="form-control" id="diagnostico-laboratorio" rows="3" value={this.state.diagnosticoLab} onChange={(e) => this.setState({diagnosticoLab: e.target.value})}></textarea>
+                <div className = "col-sm-12 col-md-8 col-lg-8">
+                    <div className="form-group">
+                        <label htmlFor="diagnostico-laboratorio"><h5 className = "title-main-color">Análisis</h5></label>
+                        <textarea className="form-control textarea-round" id="diagnostico-laboratorio" rows="3" value={this.state.diagnosticoLab} onChange={(e) => this.setState({diagnosticoLab: e.target.value})}></textarea>
+                    </div>
                 </div>
             </div>
         );
@@ -183,23 +204,31 @@ export class AppointmentDashboard extends React.Component {
                             <li className="bar">
                                 <a className="bar" href="#">Consultas Anteriores</a>
                             </li>
+                            <li className="bar btn-sidebar-item">
+                                <button type="submit" className="btn btn-success btn-round btn-sidebar-item ">Guardar</button>
+                            </li>
                             
                         </ul>
                     </nav>
                     {this.state.toSearch ? <Redirect to='/searchPatients'/> : null}
-                    <p>{this.state.patient.name}</p>
-                    <div id="content">
-                        <form>
+                    
+                    <div id="content" className = "mt-3">
+                        <div className="container">
 
-                            
-                            {/* seccion de antecedentes */}
-                            {this.state.formSection === 0 ? this.renderAntecedentes() : this.state.formSection === 1 ? this.renderConsultas() : this.renderExamenes()}
-                            
+                            <form>
+                                
+                                {/* seccion de antecedentes */}
+                                {this.state.formSection === 0 ? this.renderAntecedentes() : this.state.formSection === 1 ? this.renderConsultas() : this.renderExamenes()}
+                                
+                                
+                                
+                                
 
-                            
-                            
-                            <button type="submit" className="btn btn-primary">Submit</button>
-                        </form>
+                                
+                                
+                                {/* <button type="submit" className="btn btn-success btn-round">Guardar</button> */}
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
