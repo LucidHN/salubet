@@ -90,9 +90,9 @@ export default class Dashboard extends React.Component {
                                         <button className="dropdown-item" onClick={() => Accounts.logout()} type="button" >
                                             <span>Salir</span>
                                         </button>
-                                        <button className="dropdown-item" onClick={this.handleToggle} type="button" id="sidebarCollapse" >
+                                        {/* <button className="dropdown-item" onClick={this.handleToggle} type="button" id="sidebarCollapse" >
                                             <span>Barra lateral</span>
-                                        </button>
+                                        </button> */}
                                         
                                     </div>
                                 </li>
@@ -126,8 +126,8 @@ export default class Dashboard extends React.Component {
                         </ul>
                     </div>
                 </nav> */}
-                {this.renderSidebar()}
-                <div id="content">
+                {/* {this.renderSidebar()} */}
+                <div>
                     {this.props.children}
                 </div>
             </div>
