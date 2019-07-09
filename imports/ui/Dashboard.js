@@ -127,7 +127,7 @@ export default class Dashboard extends React.Component {
                     </div>
                 </nav> */}
                 {/* {this.renderSidebar()} */}
-                <div id="content">
+                <div>
                     {this.props.children}
                 </div>
             </div>
